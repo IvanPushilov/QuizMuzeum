@@ -15,6 +15,10 @@ export const authLogout = createAsyncThunk('auth/logout', () => api.logoutFetch(
 
 export const authCheckUser = createAsyncThunk('auth/check-user', () => api.checkUserFetch())
 
+export const authLogout = createAsyncThunk('auth/logout', () => api.logoutFetch())
+
+export const authCheckUser = createAsyncThunk('auth/check-user', () => api.checkUserFetch())
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
