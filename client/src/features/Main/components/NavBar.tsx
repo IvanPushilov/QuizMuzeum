@@ -24,7 +24,7 @@ function NavBar(): JSX.Element {
         <li className="menu__group">
           <a
             className="menu__link r-link text-underlined"
-            href="https://vk.com"
+            href="https://vk.com/synergyoil86"
             target="_blank"
             rel="noopener noreferrer"
           >
