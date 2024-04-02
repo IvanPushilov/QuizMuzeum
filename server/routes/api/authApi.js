@@ -57,5 +57,35 @@ router.post('/sign-up', async (req, res) => {
     res.status(500).json({message})
   }
 })
+router.post('/sign-in', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (email && password) {
+      const user = await User.findOne({ where: { email } });
+      if (user && (await bcrypt.compare(password, user.password))) {
+        const { accessToken, refreshToken } = generateTokens({
+          user: { email: email, id: user.id, role: user.role },
+        });
+
+        res.cookie(cookiesConfig.access, accessToken, {
+          maxAge: cookiesConfig.maxAgeAccess,
+          httpOnly: true,
+        });
+        res.cookie(cookiesConfig.refresh, refreshToken, {
+          maxAge: cookiesConfig.maxAgeRefresh,
+          httpOnly: true,
+        });
+        res.status(200).json({ message: 'success', user });
+      } else {
+        res.status(400).json({ message: 'логин или пароль не верный' });
+      }
+    } else {
+      res.status(400).json({ message: 'Заполните все поля' });
+    }
+  } catch ({ message }) {
+    res.status(500).json(message);
+  }
+});
 
 module.exports = router
