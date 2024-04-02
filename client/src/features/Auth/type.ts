@@ -9,6 +9,7 @@ export type User = {
 }
 
 export type UserForRegistration = Omit<User, 'id' | 'score' | 'role'>
+export type UserForAuthorisation = Pick<User, 'email' | 'password'>
 
 export type StateAuth = {
   user: User | null ;
