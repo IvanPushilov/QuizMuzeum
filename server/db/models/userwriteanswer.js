@@ -5,9 +5,9 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class UserWriteAnswer extends Model {
     
-    static associate({Users, Questions}) {
-      this.belongsTo(Users, {foreignKey: 'user_id'})
-      this.belongsTo(Questions, {foreignKey: 'question_id'})
+    static associate({User, Question}) {
+      this.belongsTo(User, {foreignKey: 'user_id'})
+      this.belongsTo(Question, {foreignKey: 'question_id'})
         }
   }
   UserWriteAnswer.init({
