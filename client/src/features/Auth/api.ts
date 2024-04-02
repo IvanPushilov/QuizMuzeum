@@ -1,4 +1,4 @@
-import type { User, UserForRegistration } from "./type";
+import type { User, UserForAuthorisation, UserForRegistration } from "./type";
 
 export const registrationFetch = async (obj: UserForRegistration) : Promise<User> => {
   const res = await fetch('/api/auth/sign-up', {
@@ -31,3 +31,18 @@ export const checkUserFetch = async (): Promise<User> => {
   const { message } = await res.json();
   throw message;
 }
+
+export const authorisationFetch = async (obj: UserForAuthorisation): Promise<User> => {
+  const res = await fetch('/api/auth/sign-in', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(obj),
+  });
+  if (res.ok) {
+    const data = await res.json();
+
+    return data.user;
+  }
+  const { message } = await res.json();
+  throw message;
+};
