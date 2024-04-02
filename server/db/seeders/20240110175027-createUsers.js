@@ -20,8 +20,8 @@ module.exports = {
       },
       {
         name: 'Admin',
-        email: 'email@example.com',
-        password: await bcrypt.hash('1003', 10),
+        email: 'admin',
+        password: await bcrypt.hash('admin', 10),
         score: 0,
         role:'admin'
       },
