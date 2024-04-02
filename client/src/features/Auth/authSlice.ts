@@ -8,15 +8,8 @@ message: '',
 }
 
 export const authRegistration = createAsyncThunk('auth/registration', (obj: UserForRegistration) => api.registrationFetch(obj))
-export const authLogin = createAsyncThunk('auth/login', (obj: UserForAuthorisation) => api.authorisationFetch(obj));
-
-
+export const authLogin = createAsyncThunk('auth/sign-in', (obj: UserForAuthorisation) => api.authorisationFetch(obj));
 export const authLogout = createAsyncThunk('auth/logout', () => api.logoutFetch())
-
-export const authCheckUser = createAsyncThunk('auth/check-user', () => api.checkUserFetch())
-
-export const authLogout = createAsyncThunk('auth/logout', () => api.logoutFetch())
-
 export const authCheckUser = createAsyncThunk('auth/check-user', () => api.checkUserFetch())
 
 const authSlice = createSlice({
