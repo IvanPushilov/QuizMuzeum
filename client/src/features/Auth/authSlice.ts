@@ -11,6 +11,10 @@ export const authRegistration = createAsyncThunk('auth/registration', (obj: User
 export const authLogin = createAsyncThunk('auth/login', (obj: UserForAuthorisation) => api.authorisationFetch(obj));
 
 
+export const authLogout = createAsyncThunk('auth/logout', () => api.logoutFetch())
+
+export const authCheckUser = createAsyncThunk('auth/check-user', () => api.checkUserFetch())
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -21,6 +25,16 @@ const authSlice = createSlice({
       state.user = action.payload
     }).addCase(authRegistration.rejected, (state, action) => {
       state.message = action.error.message
+    }).addCase(authLogout.fulfilled, (state) => {
+      state.user = null;
+      state.message = '';
+    }).addCase(authLogout.rejected, (state) => {
+      state.message = 'Logout error'
+    }).addCase(authCheckUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.message = '';
+    }).addCase(authCheckUser.rejected, (state, action) => {
+      state.message = action.error.message;
     })
     .addCase(authLogin.fulfilled, (state, action) => {
       state.user = action.payload;

@@ -1,16 +1,16 @@
 const express = require('express');
+const router = express.Router()
 const bcrypt = require('bcrypt');
 const generateTokens = require('../../utils/authUtils');
 const cookiesConfig = require('../../middleware/cookiesConfig');
 const configJWT = require('../../middleware/jwtConfig');
 const {User} = require('../../db/models');
 
-const router = express.Router()
 
 router.post('/sign-up', async (req, res) => {
   try {
-    const { name, email, password} = req.body;
     console.log('-------------');
+    const { name, email, password} = req.body;
 
     if (name && email && password) {
       const globalRegex =
@@ -86,6 +86,23 @@ router.post('/sign-in', async (req, res) => {
   } catch ({ message }) {
     res.status(500).json(message);
   }
+});
+
+router.get('/check', async (req, res) => {
+  if (res.locals.user) {
+    const user = await User.findOne({
+      where: { id: res.locals.user.id },
+      attributes: { exclude: ['password'] },
+    });
+    res.json({ user });
+    return;
+  }
+  res.json({ user: null });
+});
+
+router.get('/logout', (req, res) => {
+  res.clearCookie(configJWT.access.type).clearCookie(configJWT.refresh.type);
+  res.json({ message: 'success' });
 });
 
 module.exports = router
