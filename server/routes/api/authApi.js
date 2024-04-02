@@ -58,4 +58,21 @@ router.post('/sign-up', async (req, res) => {
   }
 })
 
+router.get('/check', async (req, res) => {
+  if (res.locals.user) {
+    const user = await User.findOne({
+      where: { id: res.locals.user.id },
+      attributes: { exclude: ['password'] },
+    });
+    res.json({ user });
+    return;
+  }
+  res.json({ user: null });
+});
+
+router.get('/logout', (req, res) => {
+  res.clearCookie(configJWT.access.type).clearCookie(configJWT.refresh.type);
+  res.json({ message: 'success' });
+});
+
 module.exports = router
