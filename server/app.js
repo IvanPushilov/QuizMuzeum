@@ -1,12 +1,19 @@
-require('@babel/register');
 const express = require('express');
-const config = require('./config/config');
-const indexRouter = require('./routes/index.router');
+require('dotenv').config();
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const indexRouter = require('./routes/index.routes');
 
+const { verifyAccessToken } = require('./middleware/verifyToken');
 const app = express();
 
 const PORT = process.env.PORT ?? 4000;
-config(app);
+app.use(cookieParser());
+app.use(verifyAccessToken);
+app.use(express.urlencoded({ extended: 'true' }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/', indexRouter);
 
 app.listen(PORT, () => {

@@ -5,12 +5,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React  from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { object, ref, string } from 'yup';
-import { useAppDispatch, type RootState } from '../../../store/store';
+import { useAppDispatch } from '../../../store/store';
 import { authRegistration } from '../authSlice';
-import '../styles/form.css';
 import type { UserForRegistration } from '../type';
 
 const checkfild = object().shape({
@@ -30,7 +28,6 @@ const checkfild = object().shape({
 function RegistrationPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const message = useSelector((store: RootState) => store.auth.message);
 
   const {
     register,
