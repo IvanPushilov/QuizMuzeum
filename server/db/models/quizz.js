@@ -4,8 +4,8 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Quizz extends Model {
-    static associate({Questions}) {
-      this.hasMany(Questions, {foreignKey:'quizz_id'})
+    static associate({Question}) {
+      this.hasMany(Question, {foreignKey:'quizz_id'})
     }
   }
   Quizz.init({

@@ -9,9 +9,10 @@ const router = express.Router()
 
 router.post('/sign-up', async (req, res) => {
   try {
-    const { name, email, password,  } = req.body;
+    const { name, email, password} = req.body;
+    console.log('-------------');
 
-    if (name && email && password ) {
+    if (name && email && password) {
       const globalRegex =
         /^[_a-z0-9-\+-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i;
 
