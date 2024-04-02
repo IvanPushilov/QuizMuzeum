@@ -7,7 +7,7 @@ const indexRouter = require('./routes/index.routes');
 const { verifyAccessToken } = require('./middleware/verifyToken');
 const app = express();
 
-const PORT = process.env.PORT ?? 4000;
+const PORT = process.env.PORT || 4000;
 app.use(cookieParser());
 app.use(verifyAccessToken);
 app.use(express.urlencoded({ extended: 'true' }));

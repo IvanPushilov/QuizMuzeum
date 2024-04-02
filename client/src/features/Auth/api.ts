@@ -1,7 +1,7 @@
 import { User, UserForRegistration } from "./type";
 
 export const registrationFetch = async (obj: UserForRegistration) : Promise<User> => {
-  const res = await fetch('api/auth/sign-up', {
+  const res = await fetch('/api/auth/sign-up', {
     method: 'post',
     headers: {
       'Content-type' : 'application/json'
