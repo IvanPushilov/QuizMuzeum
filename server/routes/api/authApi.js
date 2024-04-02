@@ -1,16 +1,16 @@
 const express = require('express');
+const router = express.Router()
 const bcrypt = require('bcrypt');
 const generateTokens = require('../../utils/authUtils');
 const cookiesConfig = require('../../middleware/cookiesConfig');
 const configJWT = require('../../middleware/jwtConfig');
 const {User} = require('../../db/models');
 
-const router = express.Router()
 
 router.post('/sign-up', async (req, res) => {
   try {
-    const { name, email, password} = req.body;
     console.log('-------------');
+    const { name, email, password} = req.body;
 
     if (name && email && password) {
       const globalRegex =
