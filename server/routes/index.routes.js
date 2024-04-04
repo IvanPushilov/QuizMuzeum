@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const authApiRouter = require('./api/authApi')
-const quizzesApiRouter = require('./api/quizzesApi')
+const tournamentsApiRouter = require('./api/tournamentsApi')
 
 router.use('/api/auth', authApiRouter)
-router.use('/api/quizzes', quizzesApiRouter)
+router.use('/api/tournaments', tournamentsApiRouter)
 
 module.exports = router

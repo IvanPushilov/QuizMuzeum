@@ -5,8 +5,8 @@ const {Tournament} = require('../../db/models')
 
 router.get('/', async (req, res) => {
   try {
-    const quizzes = await Tournament.findAll()
-    res.json({quizzes})
+    const tournaments = await Tournament.findAll()
+    res.json({tournaments})
   } catch ({message}) {
     res.status(500).json(message)
   }

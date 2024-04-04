@@ -13,11 +13,11 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      quizz_id: {
+      tournament_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: "Quizzes",
+          model: "Tournaments",
           key: "id",
         },
       },

@@ -6,8 +6,8 @@ import AuthorisationPage from '../features/Auth/components/AuthorisationPage';
 import { useAppDispatch } from '../store/store';
 import { authCheckUser } from '../features/Auth/authSlice';
 import MainPage from '../features/MainContent/components/MainPage';
-import { quizzesLoad } from '../features/Quizzes/quizzesSlice';
-import QuizzesPage from '../features/Quizzes/components/QuizzesPage';
+import { tournamentsLoad } from '../features/Tournament/tournamentsSlice';
+import TournamentsPage from '../features/Tournament/components/TournamentsPage';
 
 function App(): JSX.Element {
 
@@ -15,7 +15,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     dispatch(authCheckUser()).catch(console.log)
-    dispatch(quizzesLoad()).catch(console.log)
+    dispatch(tournamentsLoad()).catch(console.log)
   }, [])
 
   return (
@@ -24,7 +24,7 @@ function App(): JSX.Element {
   <Route index element={<MainPage/>}/>
   <Route path='sign-up' element={<RegistrationPage/>} />
   <Route path='sign-in' element={<AuthorisationPage/>} />
-  <Route path='tournaments' element={<QuizzesPage/>}/>
+  <Route path='tournaments' element={<TournamentsPage/>}/>
   </Route>
 </Routes>
   );
