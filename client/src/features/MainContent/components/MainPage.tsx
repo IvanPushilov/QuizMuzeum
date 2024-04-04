@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { RootState } from '../../../store/store'
 import PostItem from '../../Posts/components/PostItem'
+import FormAddPost from '../../Posts/components/FormAddPost'
 
 
 function MainPage(): JSX.Element {
@@ -25,6 +26,7 @@ function MainPage(): JSX.Element {
             </li>
       </ul>
       <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div>
+      <FormAddPost/>
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import type { RootState } from '../../../store/store'
 import TournamentItem from './TournamentItem'
 
-function TournamentPage(): JSX.Element {
+function TournamentsPage(): JSX.Element {
 
   const Tournaments = useSelector((store: RootState) => store.tournaments.tournaments)
 
@@ -16,4 +16,4 @@ function TournamentPage(): JSX.Element {
   )
 }
 
-export default TournamentPage
+export default TournamentsPage

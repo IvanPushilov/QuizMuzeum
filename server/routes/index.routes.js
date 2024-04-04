@@ -9,4 +9,5 @@ router.use('/api/auth', authApiRouter)
 router.use('/api/tournaments', tournamentsApiRouter)
 
 
+
 module.exports = router
