@@ -1,23 +1,24 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import '../styles/nav.css';
-import { useAppDispatch } from '../../../store/store';
-import * as api from '../../Auth/api'
+import { useSelector } from 'react-redux';
+import { type RootState, useAppDispatch } from '../../../store/store';
+import * as api from '../../Auth/api';
 import { authLogout } from '../../Auth/authSlice';
 
 function NavBar(): JSX.Element {
-
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((store: RootState) => store.auth.user);
 
   const handleLogout = async (): Promise<void> => {
     await api.logoutFetch().then((data) => {
       if (data.message === 'success') {
-        dispatch(authLogout()).catch(console.log)
-        navigate('/')
+        dispatch(authLogout()).catch(console.log);
+        navigate('/');
       }
-    })
-  }
+    });
+  };
 
   return (
     <nav className="page__menu page__custom-settings menu">
@@ -25,16 +26,6 @@ function NavBar(): JSX.Element {
         <li className="menu__group">
           <NavLink className="menu__link r-link text-underlined" to="/tournaments">
             Турниры
-          </NavLink>
-        </li>
-        <li className="menu__group">
-          <NavLink className="menu__link r-link text-underlined" to="/sign-up">
-            Регистрация
-          </NavLink>
-        </li>
-        <li className="menu__group">
-          <NavLink className="menu__link r-link text-underlined" to="/sign-in">
-            Вход
           </NavLink>
         </li>
         <li className="menu__group">
@@ -52,11 +43,18 @@ function NavBar(): JSX.Element {
             ЛК
           </NavLink>
         </li>
-        <li className="menu__group">
-          <NavLink onClick={handleLogout} className="menu__link r-link text-underlined" to="/logout">
-            Выйти
-          </NavLink>
-        </li>
+        {!user && (
+          <li className="menu__group">
+            <NavLink
+              onClick={handleLogout}
+              className="menu__link r-link text-underlined"
+              to="/logout"
+            >
+              Выйти
+            </NavLink>
+          </li>
+        ) 
+        }
       </ul>
     </nav>
   );

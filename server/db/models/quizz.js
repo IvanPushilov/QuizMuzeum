@@ -15,6 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       type: DataTypes.TEXT
     },
+    img: {
+      type: DataTypes.TEXT
+    },
+    time: {
+      type: DataTypes.TEXT
+    }
   }, {
     sequelize,
     modelName: 'Quizz',
