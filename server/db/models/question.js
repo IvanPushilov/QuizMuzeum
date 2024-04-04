@@ -4,19 +4,19 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Question extends Model {
-    static associate({Quizz, Answer, UserAnswer, UserWriteAnswer}) {
+    static associate({Tournament, Answer, UserAnswer, UserWriteAnswer}) {
      this.hasMany(UserAnswer, {foreignKey:'question_id'})
-     this.belongsTo(Quizz, {foreignKey:'quizz_id'})
+     this.belongsTo(Tournament, {foreignKey:'tournament_id'})
      this.hasMany(UserWriteAnswer, {foreignKey:'question_id'})
      this.hasMany(Answer, {foreignKey:'question_id'})
     }
   }
   Question.init({
-    quizz_id: {
+    tournament_id: {
       allowNull: false,
       type: DataTypes.INTEGER,
       references: {
-        model: "Quizzes",
+        model: "Tournaments",
         key: "id",
       },
     },

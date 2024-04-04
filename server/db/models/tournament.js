@@ -3,12 +3,12 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Quizz extends Model {
+  class Tournament extends Model {
     static associate({Question}) {
-      this.hasMany(Question, {foreignKey:'quizz_id'})
+      this.hasMany(Question, {foreignKey:'tournament_id'})
     }
   }
-  Quizz.init({
+  Tournament.init({
     title: {
       type: DataTypes.TEXT
     },
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Quizz',
+    modelName: 'Tournament',
   });
-  return Quizz;
+  return Tournament;
 };
