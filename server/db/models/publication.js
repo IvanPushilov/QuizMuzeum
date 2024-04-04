@@ -3,12 +3,12 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Publication extends Model {
+  class Post extends Model {
     static associate({Comment}) {
-      this.hasMany(Comment, {foreignKey:'publication_id'})
+      this.hasMany(Comment, {foreignKey:'post_id'})
     }
   }
-  Publication.init({
+  Post.init({
     title: {
       type: DataTypes.TEXT,
       allowNull:false,
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull:false,
     },
-    image: {
+    img: {
       type: DataTypes.TEXT,
       allowNull:true,
     },
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'Publication',
+    modelName: 'Post',
   });
-  return Publication;
+  return Post;
 };

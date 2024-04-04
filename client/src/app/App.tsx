@@ -8,6 +8,7 @@ import { authCheckUser } from '../features/Auth/authSlice';
 import MainPage from '../features/MainContent/components/MainPage';
 import { tournamentsLoad } from '../features/Tournament/tournamentsSlice';
 import TournamentsPage from '../features/Tournament/components/TournamentsPage';
+import { postsLoad } from '../features/Posts/postsSlice';
 
 function App(): JSX.Element {
 
@@ -16,6 +17,7 @@ function App(): JSX.Element {
   useEffect(() => {
     dispatch(authCheckUser()).catch(console.log)
     dispatch(tournamentsLoad()).catch(console.log)
+    dispatch(postsLoad()).catch(console.log)
   }, [])
 
   return (

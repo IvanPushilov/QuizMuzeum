@@ -22,11 +22,11 @@ module.exports = {
         },
         onDelete: 'CASCADE',
       },
-      publication_id: {
+      post_id: {
         type: Sequelize.INTEGER,
         allowNull:false,
         references: {
-          model: 'Publications',
+          model: 'Posts',
           key: 'id',
         }
       },

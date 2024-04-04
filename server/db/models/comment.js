@@ -4,8 +4,8 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Comment extends Model {
-    static associate({Publication, User}) {
-      this.belongsTo(Publication, {foreignKey: 'publication_id'}),
+    static associate({Post, User}) {
+      this.belongsTo(Post, {foreignKey: 'post_id'}),
       this.belongsTo(User, {foreignKey: 'user_id'})
         }
   }
@@ -24,11 +24,11 @@ module.exports = (sequelize, DataTypes) => {
 
       onDelete: 'CASCADE',
     },
-    publication_id: {
+    post_id: {
       type: DataTypes.INTEGER,
       allowNull:false,
       references: {
-        model: 'Publications',
+        model: 'Posts',
         key: 'id',
       }
     },
