@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { RootState } from '../../../store/store'
+import PostItem from '../../Posts/components/PostItem'
+
 
 function MainPage(): JSX.Element {
+  const posts = useSelector((store:RootState)=>store.posts.posts)
+
   return (
     <div>
     <div>СИНЕРГИЯ: НЕФТЬ И ГАЗ </div>
@@ -17,7 +23,9 @@ function MainPage(): JSX.Element {
                 Вход
               </Link>
             </li>
-      </ul></div>
+      </ul>
+      <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div>
+      </div>
     </div>
   )
 }
