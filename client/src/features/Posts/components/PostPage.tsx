@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../store/store';
 import { useParams } from 'react-router-dom';
+import { RootState } from '../../../store/store';
 
 
 function PostPage(): JSX.Element {

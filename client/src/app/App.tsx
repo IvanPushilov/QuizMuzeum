@@ -10,6 +10,7 @@ import { tournamentsLoad } from '../features/Tournament/tournamentsSlice';
 import TournamentsPage from '../features/Tournament/components/TournamentsPage';
 import { postAdd, postsLoad } from '../features/Posts/postsSlice';
 import PostPage from '../features/Posts/components/PostPage';
+import GamePage from '../features/Tournament/GamePage';
 
 function App(): JSX.Element {
 
@@ -30,6 +31,7 @@ function App(): JSX.Element {
   <Route path='sign-in' element={<AuthorisationPage/>} />
   <Route path='tournaments' element={<TournamentsPage/>}/>
   <Route path='posts/:postId' element={<PostPage/>}/>
+  <Route path='tournaments/:tournamentId' element={<GamePage/>}/>
   </Route>
 </Routes>
   );
