@@ -10,6 +10,9 @@ message: '',
 export const postsLoad = createAsyncThunk('posts/load', () =>
  api.postsLoadFetch())
 
+ export const postAdd = createAsyncThunk('post/add', (obj: FormData) =>
+  api.postAddFetch(obj))
+
 const postsSlice = createSlice({
     name: 'posts',
     initialState,
@@ -22,7 +25,14 @@ const postsSlice = createSlice({
       .addCase(postsLoad.rejected, (state, action) => {
           state.message = action.error.message
       })
+      .addCase(postAdd.fulfilled, (state, action) => {
+        state.posts.push(action.payload);
+      })
+      .addCase(postAdd.rejected, (state, action) => {
+        state.message = action.error.message;
+      })
     }
 })
+
 
 export default postsSlice.reducer

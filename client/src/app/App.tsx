@@ -8,7 +8,9 @@ import { authCheckUser } from '../features/Auth/authSlice';
 import MainPage from '../features/MainContent/components/MainPage';
 import { tournamentsLoad } from '../features/Tournament/tournamentsSlice';
 import TournamentsPage from '../features/Tournament/components/TournamentsPage';
-import { postsLoad } from '../features/Posts/postsSlice';
+import { postAdd, postsLoad } from '../features/Posts/postsSlice';
+import PostPage from '../features/Posts/components/PostPage';
+import GamePage from '../features/Tournament/GamePage';
 
 function App(): JSX.Element {
 
@@ -18,6 +20,7 @@ function App(): JSX.Element {
     dispatch(authCheckUser()).catch(console.log)
     dispatch(tournamentsLoad()).catch(console.log)
     dispatch(postsLoad()).catch(console.log)
+    // dispatch(postAdd()).catch(console.log)
   }, [])
 
   return (
@@ -27,6 +30,8 @@ function App(): JSX.Element {
   <Route path='sign-up' element={<RegistrationPage/>} />
   <Route path='sign-in' element={<AuthorisationPage/>} />
   <Route path='tournaments' element={<TournamentsPage/>}/>
+  <Route path='posts/:postId' element={<PostPage/>}/>
+  <Route path='tournaments/:tournamentId' element={<GamePage/>}/>
   </Route>
 </Routes>
   );
