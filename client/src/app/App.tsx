@@ -11,6 +11,8 @@ import TournamentsPage from '../features/Tournament/components/TournamentsPage';
 import { postAdd, postsLoad } from '../features/Posts/postsSlice';
 import PostPage from '../features/Posts/components/PostPage';
 import GamePage from '../features/Tournament/GamePage';
+import Profile from '../features/Profile/components/Profile';
+import RegLog from '../features/Auth/components/RegLog';
 
 function App(): JSX.Element {
 
@@ -27,8 +29,9 @@ function App(): JSX.Element {
 <Routes>
   <Route path='/' element={<Main/>}>
   <Route index element={<MainPage/>}/>
-  <Route path='sign-up' element={<RegistrationPage/>} />
-  <Route path='sign-in' element={<AuthorisationPage/>} />
+  <Route path='auth' element={<RegLog/>} />
+  {/* <Route path='sign-in' element={<AuthorisationPage/>} /> */}
+  <Route path='profile' element={<Profile/>}/>
   <Route path='tournaments' element={<TournamentsPage/>}/>
   <Route path='posts/:postId' element={<PostPage/>}/>
   <Route path='tournaments/:tournamentId' element={<GamePage/>}/>
