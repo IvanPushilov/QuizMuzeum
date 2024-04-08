@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import '../styles/reglog.css';
 import type { RootState} from '../../../store/store';
 import { useAppDispatch } from '../../../store/store';
 
