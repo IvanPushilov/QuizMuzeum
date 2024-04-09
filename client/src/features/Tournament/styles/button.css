@@ -1,0 +1,7 @@
+.disabledBtn{
+    pointer-events: none;
+    background-color: grey;
+    border: none;
+
+
+}

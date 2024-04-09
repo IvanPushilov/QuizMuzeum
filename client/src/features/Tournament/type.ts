@@ -18,6 +18,7 @@ export type Question = {
   title: string;
   price: number;
   tournament_id: number;
+  Answers: Answer[]
 }
 
 export type QuestionId = Question['id']
@@ -29,12 +30,15 @@ export type QuestionState = {
 }
 
 export type Answer = {
+  id:number
   answer: string;
   question_id: number;
   isCorrect: boolean;
 }
 
+
 export type AnswerState = {
   answers: Answer[];
+  answer: null | string
   message: string | undefined;
 }
