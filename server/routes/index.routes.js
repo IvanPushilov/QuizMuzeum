@@ -12,7 +12,7 @@ router.use('/api', mainpageApi)
 router.use('/api/auth', authApiRouter)
 router.use('/api/tournaments', tournamentsApiRouter)
 
-router.use('/api/profile/update', userApiRouter)
+router.use('/api/profile', userApiRouter)
 router.use('/api/questions', questionsApiRouter)
 router.use('/api/answers', answersApiRouter)
 router.use('/api/comments', commentsApi)

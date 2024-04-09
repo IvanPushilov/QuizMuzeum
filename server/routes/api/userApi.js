@@ -16,16 +16,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.get("/profile", async (req, res) => {
-  try {
-    const users = await User.findAll();
-    res.json({ users });
-  } catch ({ message }) {
-    res.status(500).json(message);
-  }
-});
 
-router.put('/profile/update', upload.single('img'), async (req, res) => {
+router.put('/update', upload.single('img'), async (req, res) => {
 	try {
 		const { name, email } = req.body;
 
