@@ -30,18 +30,14 @@ function GamePage(): JSX.Element {
   const currentQuestions = questions.filter((question) => question.tournament_id === currentGame?.id)
 
   const answers = useSelector((store: RootState) => store.answers.answers)
-  const currentAnswers = answers.filter((answer) => answer.question_id === currentQuestions[0].id)
+  // const currentAnswers = answers.filter((answer) => answer.question_id === currentQuestions[0].id)
 
   if (!currentGame) {
     return <div>Карточка не найдена</div>;
   }
 
   return (
-    <div>
-     {currentQuestions.map((question) => (
-      <QuestionItem key={question.id} question ={question}/>     
-     ))}
-    </div>
+      <QuestionItem />    
   );
 }
 

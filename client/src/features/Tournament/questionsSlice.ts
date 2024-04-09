@@ -4,6 +4,7 @@ import * as api from './api'
 
 const initialState: QuestionState = {
   questions: [],
+  question:null,
   message: '',
 }
 
@@ -15,9 +16,11 @@ const questionsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(questionsLoad.fulfilled, (state, action) => {state.questions = action.payload}).addCase(questionsLoad.rejected, (state, action) => {
-      state.message = action.error.message
-    })
+    builder
+    .addCase(questionsLoad.fulfilled, (state, action) => {state.questions = action.payload})
+    .addCase(questionsLoad.rejected, (state, action) => { state.message = action.error.message})
+    .addCase(getQuestionId.fulfilled, (state, action) => {state.question = action.payload})
+    .addCase(getQuestionId.rejected, (state, action) => { state.message = action.error.message})
   }
 })
 
