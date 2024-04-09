@@ -8,7 +8,7 @@ import { authCheckUser } from '../features/Auth/authSlice';
 import MainPage from '../features/MainContent/components/MainPage';
 import { tournamentsLoad } from '../features/Tournament/tournamentsSlice';
 import TournamentsPage from '../features/Tournament/components/TournamentsPage';
-import { postAdd, postsLoad } from '../features/Posts/postsSlice';
+import { postsLoad } from '../features/Posts/postsSlice';
 import PostPage from '../features/Posts/components/PostPage';
 import GamePage from '../features/Tournament/GamePage';
 import Profile from '../features/Profile/components/Profile';

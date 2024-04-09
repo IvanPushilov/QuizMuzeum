@@ -11,7 +11,7 @@ export const authRegistration = createAsyncThunk('auth/registration', (obj: User
 export const authLogin = createAsyncThunk('auth/sign-in', (obj: UserForAuthorisation) => api.authorisationFetch(obj));
 export const authLogout = createAsyncThunk('auth/logout', () => api.logoutFetch());
 export const authCheckUser = createAsyncThunk('auth/check-user', () => api.checkUserFetch());
-export const userUpd = createAsyncThunk('profile/user', (obj: FormData) =>
+export const userUpd = createAsyncThunk('profile/update', (obj: FormData) =>
 api.profileUpdateFetch(obj))
 
 const authSlice = createSlice({
