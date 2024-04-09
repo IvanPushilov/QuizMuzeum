@@ -6,6 +6,7 @@ export type User = {
   rpassword: string;
   score: number;
   role: string;
+  img: string;
 }
 
 export type UserForRegistration = Omit<User, 'id' | 'score' | 'role'>

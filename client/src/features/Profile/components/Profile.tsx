@@ -9,8 +9,13 @@ function Profile ():JSX.Element {
     const user = useSelector((store: RootState) => store.auth.user);
   
   return (
-    
-    <div>Привет {user?.name}</div>
+    <div>
+      <img src={user?.img} alt="huy" />
+    <p>имя: {user?.name}</p>
+    <p>очки: {user?.score}</p>
+    <p>почта: {user?.email}</p>
+    </div>
+   
     
   )
 }

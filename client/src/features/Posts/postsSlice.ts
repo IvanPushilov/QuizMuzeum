@@ -1,6 +1,8 @@
-import { PostsState } from "./type";
-import * as api from './api';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+import type { PostsState } from "./type";
+
+import * as api from './api';
 
 export const initialState: PostsState = {
 posts: [],
