@@ -1,18 +1,22 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
-import Main from '../features/Main/components/Main';
-import RegistrationPage from '../features/Auth/components/RegistrationPage';
-import AuthorisationPage from '../features/Auth/components/AuthorisationPage';
-import { useAppDispatch } from '../store/store';
 import { authCheckUser } from '../features/Auth/authSlice';
+import AuthorisationPage from '../features/Auth/components/AuthorisationPage';
+import RegLog from '../features/Auth/components/RegLog';
+import Main from '../features/Main/components/Main';
 import MainPage from '../features/MainContent/components/MainPage';
 import { tournamentsLoad } from '../features/Tournament/tournamentsSlice';
 import TournamentsPage from '../features/Tournament/components/TournamentsPage';
 import { postsLoad } from '../features/Posts/postsSlice';
 import PostPage from '../features/Posts/components/PostPage';
-import GamePage from '../features/Tournament/GamePage';
+import { postsLoad } from '../features/Posts/postsSlice';
 import Profile from '../features/Profile/components/Profile';
-import RegLog from '../features/Auth/components/RegLog';
+import GamePage from '../features/Tournament/components/GamePage';
+import TournamentsPage from '../features/Tournament/components/TournamentsPage';
+import { questionsLoad } from '../features/Tournament/questionsSlice';
+import { tournamentsLoad, } from '../features/Tournament/tournamentsSlice';
+import { useAppDispatch } from '../store/store';
+import { answersLoad } from '../features/Tournament/answersSlice';
 
 function App(): JSX.Element {
 
@@ -22,6 +26,8 @@ function App(): JSX.Element {
     dispatch(authCheckUser()).catch(console.log)
     dispatch(tournamentsLoad()).catch(console.log)
     dispatch(postsLoad()).catch(console.log)
+    dispatch(questionsLoad()).catch(console.log)
+    dispatch(answersLoad()).catch(console.log)
   }, [])
 
   return (
@@ -33,7 +39,7 @@ function App(): JSX.Element {
   <Route path='profile' element={<Profile/>}/>
   <Route path='tournaments' element={<TournamentsPage/>}/>
   <Route path='posts/:postId' element={<PostPage/>}/>
-  <Route path='tournaments/:tournamentId' element={<GamePage/>}/>
+  <Route path='tournaments/:tournamentId/questions/:questionId' element={<GamePage/>}/>
   </Route>
 </Routes>
   );
