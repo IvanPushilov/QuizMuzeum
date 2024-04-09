@@ -38,12 +38,14 @@ function NavBar(): JSX.Element {
             VK
           </a>
         </li>
-        <li className="menu__group">
+        {user != null ? <li className="menu__group">
           <NavLink className="menu__link r-link text-underlined" to="/profile">
             ЛК
           </NavLink>
-        </li>
-        {!user && (
+        </li> :  <NavLink className="menu__link r-link text-underlined" to="/auth">
+            ЛК
+          </NavLink>}
+        {user && (
           <li className="menu__group">
             <NavLink
               onClick={handleLogout}

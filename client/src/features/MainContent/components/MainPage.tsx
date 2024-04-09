@@ -15,15 +15,11 @@ function MainPage(): JSX.Element {
     <div>МЕЖДУНАРОДНЫЙ ИНТЕЛЕКТУАЛЬНЫЙ ТУРНИР</div>
     <div><ul>
     <li className="menu__group">
-              <Link className="menu__link r-link text-underlined" to="/sign-up">
-                Регистрация
+              <Link className="menu__link r-link text-underlined" to="/auth">
+                Регистрация/Вход
               </Link>
             </li>
-            <li className="menu__group">
-              <Link className="menu__link r-link text-underlined" to="/sign-in">
-                Вход
-              </Link>
-            </li>
+           
       </ul>
       <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div>
       <FormAddPost/>
