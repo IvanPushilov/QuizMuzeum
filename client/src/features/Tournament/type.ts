@@ -24,6 +24,7 @@ export type QuestionId = Question['id']
 
 export type QuestionState = {
   questions: Question[],
+  question:null | Question
   message: string | undefined
 }
 

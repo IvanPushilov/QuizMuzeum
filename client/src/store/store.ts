@@ -14,8 +14,9 @@ export const store = configureStore({
     tournaments: tournamentsSlice,
     posts: postsSlice,
     questions: questionSlice,
-    answers: answersSlice
+    answers: answersSlice,
     comment: commentsSlice,
+    
   }
 })
 
