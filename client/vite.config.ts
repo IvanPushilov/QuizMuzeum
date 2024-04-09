@@ -17,7 +17,12 @@ export default defineConfig({
       '/profileImg': {
         target: 'http://localhost:4000/',
         changeOrigin: true,
+      }, 
+      '/userImg': {
+        target: 'http://localhost:4000/',
+        changeOrigin: true,
       },
     },
+    },
   }
-});
+);

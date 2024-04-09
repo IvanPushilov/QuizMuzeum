@@ -26,12 +26,8 @@ router.get("/posts", async (req, res) => {
 });
 router.post("/posts", upload.single('img'), async (req, res) => {
   try {
-    console.log('1----------------');
     const { title, description } = req.body;
-    console.log('2----------------');
-    console.log(title, description);
     let newFileUrl = '';
-    console.log('3----------------');
 		if (req.file) {
 			newFileUrl = `/postImg/${req.file.originalname}`;
 		}
