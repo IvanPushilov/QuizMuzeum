@@ -1,6 +1,6 @@
 import React from 'react';
-import type { Post } from '../type';
 import { Link } from 'react-router-dom';
+import type { Post } from '../type';
 
 function PostItem({ post }: { post: Post }): JSX.Element {
   return (
