@@ -11,6 +11,26 @@ export type PostsState = {
   message: string | undefined
 }
 
+export type Comment = {
+  id:number
+  user_id:number
+  title: string;
+  post_id: number
+  date:string
+
+}
+
+export type CommentFetch = {
+  title: string;
+  post_id: number
+}
+
+
+export type CommentsState = {
+  comment: Comment[],
+  message: string | undefined
+}
+
 
   export type PostItemId = Post['id']
   

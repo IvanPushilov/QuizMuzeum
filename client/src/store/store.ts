@@ -5,7 +5,7 @@ import postsSlice from "../features/Posts/postsSlice";
 import questionSlice from "../features/Tournament/questionsSlice";
 import tournamentsSlice from "../features/Tournament/tournamentsSlice";
 import answersSlice from "../features/Tournament/answersSlice";
-
+import commentsSlice from "../features/Posts/commentsSlice";
 
 
 export const store = configureStore({
@@ -15,6 +15,7 @@ export const store = configureStore({
     posts: postsSlice,
     questions: questionSlice,
     answers: answersSlice
+    comment: commentsSlice,
   }
 })
 

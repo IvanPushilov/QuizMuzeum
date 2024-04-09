@@ -10,10 +10,10 @@ function Profile ():JSX.Element {
   
   return (
     <div>
-      <img src={user?.img} alt="huy" />
-    <p>имя: {user?.name}</p>
-    <p>очки: {user?.score}</p>
-    <p>почта: {user?.email}</p>
+      <img src={user?.img} alt="huy marka" />
+    <p>Имя: {user?.name}</p>
+    <p>Очки: {user?.score}</p>
+    <p>Почта: {user?.email}</p>
     </div>
    
     
