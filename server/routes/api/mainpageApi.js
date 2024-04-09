@@ -12,13 +12,13 @@ router.get("/posts", async (req, res) => {
 });
 router.post("/posts", async (req, res) => {
   try {
-    const { title, img, description, file } = req.body;
+    const { title, description } = req.body;
+    console.log(title, description);
 
     const post = await Post.create({
       title,
       description,
-      img,
-      file,
+      img: null,
     });
     res.json({ post });
   } catch ({ message }) {

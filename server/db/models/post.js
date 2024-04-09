@@ -21,10 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull:true,
     },
-    file: {    
-      type: DataTypes.BLOB,
-      allowNull: true,
-    },
+   
     date:{ 
       type: DataTypes.DATE,
     defaultValue: new Date(),
