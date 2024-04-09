@@ -33,6 +33,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: 'user',
     },
+    img:{
+      type: DataTypes.TEXT,
+    }
   }, {
     sequelize,
     modelName: 'User',

@@ -46,3 +46,14 @@ export const authorisationFetch = async (obj: UserForAuthorisation): Promise<Use
   const { message } = await res.json();
   throw message;
 };
+
+
+export const profileUpdateFetch = async (obj: FormData): Promise<User> => {
+    const res = await fetch('/api/user', {
+      method: 'put',
+      body: obj,
+    });
+    const data = await res.json();
+    return data.user;
+  };
+  

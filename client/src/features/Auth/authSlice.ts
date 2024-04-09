@@ -7,10 +7,12 @@ user: null,
 message: '',
 }
 
-export const authRegistration = createAsyncThunk('auth/registration', (obj: UserForRegistration) => api.registrationFetch(obj))
+export const authRegistration = createAsyncThunk('auth/registration', (obj: UserForRegistration) => api.registrationFetch(obj));
 export const authLogin = createAsyncThunk('auth/sign-in', (obj: UserForAuthorisation) => api.authorisationFetch(obj));
-export const authLogout = createAsyncThunk('auth/logout', () => api.logoutFetch())
-export const authCheckUser = createAsyncThunk('auth/check-user', () => api.checkUserFetch())
+export const authLogout = createAsyncThunk('auth/logout', () => api.logoutFetch());
+export const authCheckUser = createAsyncThunk('auth/check-user', () => api.checkUserFetch());
+export const userUpd = createAsyncThunk('profile/user', (obj: FormData) =>
+api.profileUpdateFetch(obj))
 
 const authSlice = createSlice({
   name: 'auth',
@@ -37,6 +39,12 @@ const authSlice = createSlice({
       state.user = action.payload;
     })
     .addCase(authLogin.rejected, (state, action) => {
+      state.message = action.error.message;
+    })
+    .addCase(userUpd.fulfilled, (state, action) => {
+      state.user = action.payload;
+    })
+    .addCase(userUpd.rejected, (state, action) =>{
       state.message = action.error.message;
     })
   }

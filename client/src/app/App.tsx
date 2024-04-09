@@ -22,7 +22,6 @@ function App(): JSX.Element {
     dispatch(authCheckUser()).catch(console.log)
     dispatch(tournamentsLoad()).catch(console.log)
     dispatch(postsLoad()).catch(console.log)
-    // dispatch(postAdd()).catch(console.log)
   }, [])
 
   return (
@@ -30,7 +29,7 @@ function App(): JSX.Element {
   <Route path='/' element={<Main/>}>
   <Route index element={<MainPage/>}/>
   <Route path='auth' element={<RegLog/>} />
-  {/* <Route path='sign-in' element={<AuthorisationPage/>} /> */}
+  <Route path='sign-in' element={<AuthorisationPage/>} />
   <Route path='profile' element={<Profile/>}/>
   <Route path='tournaments' element={<TournamentsPage/>}/>
   <Route path='posts/:postId' element={<PostPage/>}/>
