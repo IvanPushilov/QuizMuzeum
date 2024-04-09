@@ -2,8 +2,8 @@ export type Post = {
     id: number;
     title: string;
     description: string;
-    file: 'pdf' | 'word';
     img: string;
+    date: string;
   }
   
 export type PostsState = {
@@ -11,19 +11,7 @@ export type PostsState = {
   message: string | undefined
 }
 
-export type TournamentState = {
-  tournaments: Tournament[],
-  message: string | undefined
-}
-export type Tournament = {
-  id: number;
-  title: string;
-  description: string;
-  img: string;
-  time: string;
-}
 
-  export type TournamentItemId = Tournament['id']
   export type PostItemId = Post['id']
   
  

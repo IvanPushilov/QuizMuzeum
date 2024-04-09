@@ -10,8 +10,8 @@ function PostItem({ post }: { post: Post }): JSX.Element {
           <img src={post.img} alt="post" />
         </div>
         <h1>{post.title}</h1>
-        <a href={post.file}>Скачать файл</a>
         <p>{post.description}</p>
+        <p>{post.date}</p>
       </Link>
     </div>
   );

@@ -7,23 +7,20 @@ const FormAddPost = (): JSX.Element => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [img, setImg] = useState('');
-  const [file, setFile] = useState('');
-
   const dispatch = useAppDispatch();
 
+ 
 
   const postAddFetch = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('title', title);
     formData.append('description', description);
-    formData.append('img', file);
-    formData.append('file', file);
+    formData.append('img', img);
     dispatch(postAdd(formData)).catch(console.log);
     setTitle('');
     setDescription('');
     setImg('');
-    setFile('');
 };
 
   return (
@@ -47,15 +44,7 @@ const FormAddPost = (): JSX.Element => {
             className="input-order"
             value={img}
             placeholder="img"
-            type="file"
             onChange={(e) => setImg(e.target.value)}
-          />
-          <input
-            className="input-order"
-            value={file}
-            placeholder="file"
-            type="file"
-            onChange={(e) => setFile(e.target.value)}
           />
           <button type="submit">Добавить</button>
         </form>

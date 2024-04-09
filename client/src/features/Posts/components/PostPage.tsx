@@ -20,8 +20,8 @@ function PostPage(): JSX.Element {
         <img src={selectedPost.img} alt="post" />
       </div>
       <h1>{selectedPost.title}</h1>
-      <a href={selectedPost.file}>Скачать файл</a>
       <p>{selectedPost.description}</p> 
+      <p>{selectedPost.date}</p> 
       <button>del</button>
       <button>upd</button>
     </div>
