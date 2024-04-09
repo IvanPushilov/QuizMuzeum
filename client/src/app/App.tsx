@@ -9,12 +9,9 @@ import { tournamentsLoad } from '../features/Tournament/tournamentsSlice';
 import TournamentsPage from '../features/Tournament/components/TournamentsPage';
 import { postsLoad } from '../features/Posts/postsSlice';
 import PostPage from '../features/Posts/components/PostPage';
-import { postsLoad } from '../features/Posts/postsSlice';
 import Profile from '../features/Profile/components/Profile';
 import GamePage from '../features/Tournament/components/GamePage';
-import TournamentsPage from '../features/Tournament/components/TournamentsPage';
 import { questionsLoad } from '../features/Tournament/questionsSlice';
-import { tournamentsLoad, } from '../features/Tournament/tournamentsSlice';
 import { useAppDispatch } from '../store/store';
 import { answersLoad } from '../features/Tournament/answersSlice';
 

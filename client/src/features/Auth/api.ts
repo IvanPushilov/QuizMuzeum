@@ -54,6 +54,6 @@ export const profileUpdateFetch = async (obj: FormData): Promise<User> => {
       body: obj,
     });
     const data = await res.json();
-    return data;
+    return data.user;
   };
   
