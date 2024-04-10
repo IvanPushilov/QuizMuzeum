@@ -23,6 +23,11 @@ function NavBar(): JSX.Element {
   return (
     <nav className="page__menu page__custom-settings menu">
       <ul className="menu__list r-list">
+      <li className="menu__group">
+          <NavLink className="menu__link r-link text-underlined" to="/">
+            Главная
+          </NavLink>
+        </li>
         <li className="menu__group">
           <NavLink className="menu__link r-link text-underlined" to="/tournaments">
             Турниры
@@ -38,13 +43,11 @@ function NavBar(): JSX.Element {
             VK
           </a>
         </li>
-        {user != null ? <li className="menu__group">
+        {user != null && <li className="menu__group">
           <NavLink className="menu__link r-link text-underlined" to="/profile">
             ЛК
           </NavLink>
-        </li> :  <NavLink className="menu__link r-link text-underlined" to="/auth">
-            ЛК
-          </NavLink>}
+        </li> }
         {user && (
           <li className="menu__group">
             <NavLink

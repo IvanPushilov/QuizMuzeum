@@ -22,17 +22,17 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
-  plugins: ['@typescript-eslint', 'react', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react-refresh', 'react', 'react-hooks'],
   rules: {
-    '@typescript-eslint/default-param-last': 'off',
     'default-param-last': 'off',
     'no-void': 'off',
     'no-param-reassign': 'off',
     'react/require-default-props': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
-    'consistent-return': 'warn',
+    'consistent-return': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    "@typescript-eslint/no-unsafe-assignment": "error",
     '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
     '@typescript-eslint/explicit-function-return-type': [
       'error',
@@ -47,6 +47,11 @@ module.exports = {
     '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
     'import/no-extraneous-dependencies': 'off',
     'no-console': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'warn',
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off'
   },
 };

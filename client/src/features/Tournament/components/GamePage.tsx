@@ -5,19 +5,16 @@ import { RootState, useAppDispatch } from '../../../store/store';
 import QuestionItem from './QuestionItem';
 import { getQuestionId } from '../questionsSlice';
 
-
 function GamePage(): JSX.Element {
-
   const { questionId } = useParams();
   const { tournamentId } = useParams();
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  console.log(questionId);
-  
   useEffect(() => {
-    dispatch(getQuestionId(questionId)).catch(console.log)
-  }, [])
+    dispatch(getQuestionId(questionId)).catch(console.log);
+  }, []);
 
+  const user = useSelector((store: RootState) => store.auth.user)
   const currentGame = useSelector((store: RootState) =>
     store.tournaments.tournaments.find((tournament) => tournament.id === Number(tournamentId)),
   );
@@ -26,9 +23,18 @@ function GamePage(): JSX.Element {
     return <div>Карточка не найдена</div>;
   }
 
-  return (
-      <QuestionItem />    
-  );
+  return(
+    <div>
+      <div>
+      <QuestionItem />
+      </div>
+   {user && (
+       <div>
+       У вас: {user?.score} очков!
+     </div>
+   )}
+    </div>
+  ) ;
 }
 
 export default GamePage;

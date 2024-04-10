@@ -14,7 +14,11 @@ function QuestionItem(): JSX.Element {
 
   const questions = useSelector((store: RootState) => store.questions.questions.filter(question => question.tournament_id === Number(tournamentId)));
   const answer = useSelector((store: RootState) => store.answers.answer);
-  const [message, setMessage] = useState('');
+
+  
+  const [message, setMessage] = useState<string | null>('');
+  console.log(message);
+  
 
   const sortedQuestions = questions.sort((a, b) => a.tournament_id - b.tournament_id || a.id - b.id);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0); // Установка начального значения индекса
@@ -34,14 +38,9 @@ function QuestionItem(): JSX.Element {
 
   const choiceAnswer = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const answerId = e.currentTarget.elements['answer'].value;
+    const answerId = e.target.answer.value;
     dispatch(rightAnswer(answerId)).then((data) => {
-      console.log(data, '---------------');
-      
       if (data.payload === 'Ответ верный'){
-
-        console.log('-----------------');
-        
         dispatch(userUpdateScore(answerId)).catch(console.log)
       }
     })
@@ -75,7 +74,7 @@ function QuestionItem(): JSX.Element {
           ))}
           <button className={message !== '' ? 'disabledBtn' : ''} type='submit' onClick={()=> setMessage(answer)}>Ответить</button>
         </form>
-        <div>{message}</div>
+        <div>{answer}</div>
       </div>
       {hasNextQuestion && (
         <button type='button' onClick={goToNextQuestion}>

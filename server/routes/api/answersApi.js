@@ -39,7 +39,6 @@ router.get('/user/:id', async (req, res) => {
   const {id} = req.params
   try {
     const user = await User.findOne({where: {id: res.locals.user.id}})
-    console.log(user, 'USER1');
     const answers = await Answer.findOne({where: +id})
     const question = await Question.findOne({where: {id: answers.question_id}})
     await user.update({score: user.score + question.price}, {where: {id: res.locals.user.id}})
