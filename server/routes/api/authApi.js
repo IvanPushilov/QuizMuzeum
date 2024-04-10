@@ -9,7 +9,6 @@ const {User} = require('../../db/models');
 
 router.post('/sign-up', async (req, res) => {
   try {
-    console.log('-------------');
     const { name, email, password} = req.body;
 
     if (name && email && password) {
@@ -28,6 +27,7 @@ router.post('/sign-up', async (req, res) => {
             name,
             email,
             password: hash,
+            img: '/profileImg/user.png',
           });
           const { accessToken, refreshToken } = generateTokens({
             user: { name: user.name, id: user.id},

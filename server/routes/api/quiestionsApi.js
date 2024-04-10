@@ -17,7 +17,6 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:questionId', async (req, res) => {
-  console.log();
   try {
     const {questionId} = req.params
     const question = await Question.findOne({where: {id: +questionId},include: 
@@ -25,7 +24,6 @@ router.get('/:questionId', async (req, res) => {
         model: Answer,
       },
     })
-    // console.log(question, 123123123123123123123123312123123);
     res.json({question})
   } catch ({message}) {
     res.status(500).json(message)

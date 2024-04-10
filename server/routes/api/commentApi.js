@@ -3,7 +3,6 @@ const router = express.Router();
 const { Comment, User, Post } = require("../../db/models");
 
 router.post('/', async (req, res) => {
-    console.log(123123123132123);
 	try {
 		const { title, post_id } = req.body;
 
@@ -25,10 +24,8 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-	console.log(12312312);
 	try {
 		const { id } = req.params;
-        console.log(id);
 		const comments = await Comment.findAll({
 			where: { post_id: +id },
 		});

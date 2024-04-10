@@ -8,6 +8,7 @@ import FormAddPost from '../../Posts/components/FormAddPost'
 
 function MainPage(): JSX.Element {
   const posts = useSelector((store:RootState)=>store.posts.posts)
+  const user = useSelector((store: RootState) => store.auth.user)
 
   return (
     <div>
@@ -16,13 +17,13 @@ function MainPage(): JSX.Element {
     <div><ul>
     <li className="menu__group">
               <Link className="menu__link r-link text-underlined" to="/auth">
-                Регистрация/Вход
+                Вход/Регистрация
               </Link>
             </li>
            
       </ul>
       <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div>
-      <FormAddPost/>
+      {user?.role === 'admin' && <FormAddPost/>}
       </div>
     </div>
   )

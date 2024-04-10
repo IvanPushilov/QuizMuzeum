@@ -24,7 +24,7 @@ export const questionIdFetch = async (id: string | undefined): Promise<Question>
   return data.question
 }
 
-export const answerIdFetch = async (id: number): Promise<{messageAnswer:string}> => {
+export const answerIdFetch = async (id: number): Promise<{messageAnswer:string | null}> => {
   const res = await fetch(`/api/answers/${id}`)
   const data = await res.json()
   return data.messageAnswer

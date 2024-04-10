@@ -8,12 +8,11 @@ import FormUpdateUser from './FormUpdateUser';
 function Profile ():JSX.Element {
   
     const user = useSelector((store: RootState) => store.auth.user);
-  console.log(user);
   
   return (
     <div>
     <FormUpdateUser/>
-      <img src={user?.img} alt="huy marka" />
+      <img src={user?.img} alt="img" />
     <p>Имя: {user?.name}</p>
     <p>Очки: {user?.score}</p>
     <p>Почта: {user?.email}</p>

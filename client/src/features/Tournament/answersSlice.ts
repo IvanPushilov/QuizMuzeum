@@ -4,7 +4,7 @@ import * as api from './api'
 
 const initialState: AnswerState = {
   answers: [],
-  answer:null,
+  answer: null,
   message: '',
 }
 
