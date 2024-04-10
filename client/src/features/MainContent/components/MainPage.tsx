@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import type { RootState } from '../../../store/store'
 import PostItem from '../../Posts/components/PostItem'
 import FormAddPost from '../../Posts/components/FormAddPost'
+import '../styles/mainPage.css'
+import '../styles/mainpage.scss'
 
 
 function MainPage(): JSX.Element {
@@ -12,17 +14,32 @@ function MainPage(): JSX.Element {
 
   return (
     <div>
-    <div>СИНЕРГИЯ: НЕФТЬ И ГАЗ </div>
-    <div>МЕЖДУНАРОДНЫЙ ИНТЕЛЕКТУАЛЬНЫЙ ТУРНИР</div>
-    <div><ul>
-    <li className="menu__group">
-              <Link className="menu__link r-link text-underlined" to="/auth">
-                Вход/Регистрация
+      <div className='container'>
+       <div className='container_main'>
+        <div className='img-pos'></div>
+      </div>
+      <div className='container_main'>
+        <div className='titleSite_down'>МЕЖДУНАРОДНЫЙ ИНТЕЛЕКТУАЛЬНЫЙ ТУРНИР</div>
+       <div className='titleSite'>«СИНЕРГИЯ: <br /> НЕФТЬ И ГАЗ» </div>
+       <p className='date'>9 - 11 ноября</p>
+       <div className='container-div'>
+        <div className='cont-auth'>
+              <Link className="link_auth" to="/auth">
+              Турниры
               </Link>
-            </li>
+              </div>
+              <Link className="link_auth" to="/auth">
+              Вход / Регистрация
+              </Link>
+              </div>
+
+      </div>
+      </div>
+     <div><ul>
+
            
       </ul>
-      <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div>
+      {/* <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div> */}
       {user?.role === 'admin' && <FormAddPost/>}
       </div>
     </div>

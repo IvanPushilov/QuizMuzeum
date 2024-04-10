@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../../store/store';
 import { rightAnswer } from '../answersSlice';
 import '../styles/button.css';
@@ -15,13 +15,14 @@ function QuestionItem(): JSX.Element {
   const questions = useSelector((store: RootState) => store.questions.questions.filter(question => question.tournament_id === Number(tournamentId)));
   const answer = useSelector((store: RootState) => store.answers.answer);
 
-  
   const [message, setMessage] = useState<string | null>('');
+  const [isAnswerVisible, setIsAnswerVisible] = useState<boolean>(false);
+  const [isNextButtonVisible, setIsNextButtonVisible] = useState<boolean>(true);
+
   console.log(message);
-  
 
   const sortedQuestions = questions.sort((a, b) => a.tournament_id - b.tournament_id || a.id - b.id);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0); // Установка начального значения индекса
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
 
   const hasNextQuestion = currentQuestionIndex < sortedQuestions.length - 1;
 
@@ -31,6 +32,7 @@ function QuestionItem(): JSX.Element {
       setCurrentQuestionIndex(nextQuestionIndex);
       window.scrollTo(0, 0);
       setMessage('');
+      setIsAnswerVisible(false); // Скрыть ответ при переходе к следующему вопросу
       const nextQuestionId = sortedQuestions[nextQuestionIndex].id;
       navigate(`/tournaments/${tournamentId}/questions/${nextQuestionId}?index=${nextQuestionIndex}`);
     }
@@ -38,49 +40,51 @@ function QuestionItem(): JSX.Element {
 
   const choiceAnswer = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+
     const answerId = e.target.answer.value;
     dispatch(rightAnswer(answerId)).then((data) => {
-      if (data.payload === 'Ответ верный'){
-        dispatch(userUpdateScore(answerId)).catch(console.log)
+      if (data.payload === 'Ответ верный') {
+        dispatch(userUpdateScore(answerId)).catch(console.log);
       }
-    })
+    });
+    setMessage(answer);
+    setIsAnswerVisible(true); // Показать ответ после выбора
+    setIsNextButtonVisible(false); // Скрыть кнопку "Далее" после выбора ответа
 
-    }
-  
+  };
 
   const question = sortedQuestions[currentQuestionIndex];
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const index = parseInt(searchParams.get('index') || '0', 10);
-    setCurrentQuestionIndex(index); // Установка начального значения индекса только при монтировании компонента
-  }, []); // Пустой массив зависимостей, чтобы useEffect вызывался только при монтировании компонента
-
-  if (!question) {
-    return <div>Вопросы закончились или не найдены.</div>;
-  }
+    setCurrentQuestionIndex(index);
+  }, []);
 
   return (
     <>
       <div>
         <p>{question.title}</p>
         <p>{question.price}</p>
-        <form onSubmit={choiceAnswer}> 
+        <form onSubmit={choiceAnswer}>
           {question.Answers.map((answer) => (
             <div key={answer.id}>
-              <label htmlFor={`answer_${answer.id}`}>{answer.answer}</label>
-              <input type="radio" id={`answer_${answer.id}`} name="answer" value={answer.id} />
+              <label  htmlFor={`answer_${answer.id}`}>{answer.answer}</label>
+              <input defaultChecked type="radio" id={`answer_${answer.id}`} name="answer" value={answer.id} />
             </div>
           ))}
-          <button className={message !== '' ? 'disabledBtn' : ''} type='submit' onClick={()=> setMessage(answer)}>Ответить</button>
+          <button className={message !== '' ? 'disabledBtn' : ''} type='submit'>Ответить</button>
         </form>
-        <div>{answer}</div>
+        {isAnswerVisible && <div>{answer}</div>}
       </div>
-      {hasNextQuestion && (
-        <button type='button' onClick={goToNextQuestion}>
+      {
+      hasNextQuestion ? (
+        <button className={message === '' ? 'disabledBtn' : ''} type='button' onClick={goToNextQuestion}>
           Далее
-        </button>
-      )}
+        </button>)
+        :
+        (<Link to='/'>Домой</Link>)
+      }
     </>
   );
 }
