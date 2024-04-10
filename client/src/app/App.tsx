@@ -14,6 +14,7 @@ import GamePage from '../features/Tournament/components/GamePage';
 import { questionsLoad } from '../features/Tournament/questionsSlice';
 import { useAppDispatch } from '../store/store';
 import { answersLoad } from '../features/Tournament/answersSlice';
+import '../index.css'
 
 function App(): JSX.Element {
 
