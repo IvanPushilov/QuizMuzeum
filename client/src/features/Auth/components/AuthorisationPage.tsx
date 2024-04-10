@@ -35,42 +35,42 @@ function AuthorisationPage(): JSX.Element {
     }
   };
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-offset-3 col-md-6">
-          <form className="form-horizontal" onSubmit={handleSubmit(login)}>
-            <span className="heading">Войти</span>
-            <div className="form-group">
-              <input
-                type="email"
-                className="form-control"
-                placeholder="E-mail"
-                {...register('email')}
-              />
-              <i className="fa fa-user" />
-              <div className="color-er">{errors.email?.message}</div>
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Password"
-                {...register('password')}
-              />
-              <i className="fa fa-user" />
-              <div className="color-er">{errors.password?.message}</div>
-            </div>
-            <div className="form-group help" />
-            <div className="form-group">
-              <button type="submit" className="btn btn-default">
-                ВХОД
-              </button>
-            </div>
-          </form>
-          <div className="errRega err"> {message}</div>
-        </div>
+    <div className="auth-form">
+    <div className="auth-form__container">
+      <div className="auth-form__content">
+        <form className="auth-form__form" onSubmit={handleSubmit(login)}>
+      
+          <div className="auth-form__input-group">
+            <input
+              type="email"
+              className="auth-form__input"
+              placeholder="E-mail"
+              {...register('email')}
+            />
+            <i className="auth-form__icon" />
+            <div className="auth-form__error">{errors.email?.message}</div>
+          </div>
+          <div className="auth-form__input-group">
+            <input
+              type="password"
+              className="auth-form__input"
+              placeholder="Password"
+              {...register('password')}
+            />
+            <i className="auth-form__icon" />
+            <div className="auth-form__error">{errors.password?.message}</div>
+          </div>
+          <div/>
+          <div className="auth-form__form-group">
+            <button type="submit" className="auth-form__button">
+              Вход
+            </button>
+          </div>
+        </form>
+        <div className="message-container"> {message}</div>
       </div>
     </div>
+  </div>
   );
 }
 

@@ -9,7 +9,7 @@ function RegLog (): JSX.Element {
   return (
    <div className='container'>
     <div className='contAuth'>
-      <div className="button-container">
+      <div>
       <button onClick={() => { setLogReg(false) }} className={logReg ? 'log-reg-button' : 'log-reg-button disabled'} type='button' >Войти</button>
       <button onClick={() => { setLogReg(true) }} className= { logReg ? 'log-reg-button disabled ' : 'log-reg-button'} type='button'>Регистрация</button>
       </div>
