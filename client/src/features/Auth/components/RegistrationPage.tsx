@@ -96,7 +96,8 @@ function RegistrationPage(): JSX.Element {
             checked={checked}
             type="checkbox"
           />
-          Согласен с условиями обработки персональных данных
+          Согласен с условиями обработки
+          <br /> персональных данных
         </label>
         <div className="auth-form__form-group">
           <button disabled={!checked} type="submit" className="auth-form__button">

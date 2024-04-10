@@ -9,9 +9,14 @@ function RegLog (): JSX.Element {
   return (
    <div className='container'>
     <div className='contAuth'>
-      <div>
-      <button onClick={() => { setLogReg(false) }} className={logReg ? 'log-reg-button' : 'log-reg-button disabled'} type='button' >Войти</button>
-      <button onClick={() => { setLogReg(true) }} className= { logReg ? 'log-reg-button disabled ' : 'log-reg-button'} type='button'>Регистрация</button>
+      <div className='log-reg'>
+        <div className='log-reg-button-enter'>
+      <button onClick={() => { setLogReg(false) }} className={logReg ? 'log-reg-button' : 'log-reg-button disabled'} type='button' >ВОЙТИ</button>
+        </div>
+        <div className='log-reg-button-registration'>
+      <button onClick={() => { setLogReg(true) }} className= { logReg ? 'log-reg-button disabled ' : 'log-reg-button'} type='button'>РЕГИСТРАЦИЯ</button>
+
+        </div>
       </div>
       { logReg && <Reg/>}
       { !logReg && <Log/>}
