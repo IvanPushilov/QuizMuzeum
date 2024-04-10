@@ -24,7 +24,7 @@ function MainPage(): JSX.Element {
        <p className='date'>9 - 11 ноября</p>
        <div className='container-div'>
         <div className='cont-auth'>
-              <Link className="link_auth" to="/auth">
+              <Link className="link_auth" to="/tournaments">
               Турниры
               </Link>
               </div>

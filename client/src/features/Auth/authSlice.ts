@@ -23,6 +23,7 @@ const authSlice = createSlice({
     builder.
     addCase(authRegistration.fulfilled, (state, action) => {
       state.user = action.payload
+      state.message = ''
     }).addCase(authRegistration.rejected, (state, action) => {
       state.message = action.error.message
     }).addCase(authLogout.fulfilled, (state) => {

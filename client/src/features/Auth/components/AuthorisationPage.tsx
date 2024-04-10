@@ -42,7 +42,7 @@ function AuthorisationPage(): JSX.Element {
       
           <div className="auth-form__input-group">
             <input
-              type="email"
+              type="text"
               className="auth-form__input"
               placeholder="Электронная почта"
               {...register('email')}
@@ -61,13 +61,14 @@ function AuthorisationPage(): JSX.Element {
             <div className="auth-form__error">{errors.password?.message}</div>
           </div>
           <div/>
+          <div className="message-container"> {message}</div>
           <div className="auth-form__form-group">
             <button type="submit" className="auth-form__button">
               ВХОД
             </button>
           </div>
         </form>
-        <div className="message-container"> {message}</div>
+        
       </div>
     </div>
   </div>
