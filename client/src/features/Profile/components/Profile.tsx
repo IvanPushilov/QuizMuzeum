@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../../store/store';
 import FormUpdateUser from './FormUpdateUser';
 
 function Profile ():JSX.Element {
-
+  
     const user = useSelector((store: RootState) => store.auth.user);
   console.log(user);
   
