@@ -7,9 +7,10 @@ import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { object, ref, string } from 'yup';
-import { useAppDispatch } from '../../../store/store';
+import { RootState, useAppDispatch } from '../../../store/store';
 import { authRegistration } from '../authSlice';
 import type { UserForRegistration } from '../type';
+import { useSelector } from 'react-redux';
 
 const checkfild = object().shape({
   name: string().required('Необходимо указать имя'),
@@ -30,6 +31,11 @@ function RegistrationPage(): JSX.Element {
   const navigate = useNavigate();
 
   const [checked, setChecked] = useState(false);
+  const message = useSelector((store: RootState) => store.auth.message);
+  console.log(message);
+  
+  
+  
 
   const {
     register,
@@ -38,8 +44,10 @@ function RegistrationPage(): JSX.Element {
   } = useForm<UserForRegistration>({ resolver: yupResolver(checkfild) });
 
   const registration: SubmitHandler<UserForRegistration> = (data: UserForRegistration) => {
-    dispatch(authRegistration(data)).catch(console.log);
-    navigate('/');
+    dispatch(authRegistration(data)).catch(console.log)
+    if (message === '') {
+      navigate('/'); 
+    }
   };
 
   return (
@@ -61,7 +69,7 @@ function RegistrationPage(): JSX.Element {
         </div>
         <div className="auth-form__input-group">
           <input
-            type="email"
+            type="text"
             className="auth-form__input"
             placeholder="Электронная почта"
             {...register('email')}
@@ -99,6 +107,7 @@ function RegistrationPage(): JSX.Element {
           Согласен с условиями обработки
           <br /> персональных данных
         </label>
+        <div className="message-container"> {message}</div>
         <div className="auth-form__form-group">
           <button disabled={!checked} type="submit" className="auth-form__button">
             Регистрация
