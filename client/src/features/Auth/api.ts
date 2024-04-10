@@ -56,4 +56,12 @@ export const profileUpdateFetch = async (obj: FormData): Promise<User> => {
     const data = await res.json();
     return data.user;
   };
+
+  export const userUpdateScoreFetch = async (id: number): Promise<User> => {
+    const res = await fetch(`/api/answers/user/${id}`)
+    const data = await res.json()
+    console.log(data, 'FDSGSDGGBSGHSDGHSHHHSEHSEHSEHS');
+    
+    return data.user
+  }
   

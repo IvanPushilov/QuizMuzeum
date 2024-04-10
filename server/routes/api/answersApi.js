@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Answer, Question } = require('../../db/models');
+const { Answer, Question, User } = require('../../db/models');
 
 
 router.get('/', async (req, res) => {
@@ -20,7 +20,6 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const {id} = req.params
-  console.log(id, 123123321123123123123);
   try {
     const answers = await Answer.findOne({where: +id})
     const question = await Question.findOne({where: {id: answers.question_id}})
@@ -29,11 +28,24 @@ router.get('/:id', async (req, res) => {
       messageAnswer = 'Ответ верный'
     }else{
       messageAnswer = 'Ответ неверный'
-
     }
 
   res.json({messageAnswer})
   } catch ({message}) {
+    res.status(500).json(message)
+  }
+})
+router.get('/user/:id', async (req, res) => {
+  const {id} = req.params
+  try {
+    const user = await User.findOne({where: {id: res.locals.user.id}})
+    console.log(user, 'USER1');
+    const answers = await Answer.findOne({where: +id})
+    const question = await Question.findOne({where: {id: answers.question_id}})
+    await user.update({score: user.score + question.price}, {where: {id: res.locals.user.id}})
+      res.json({user})
+    }
+   catch ({message}) {
     res.status(500).json(message)
   }
 })

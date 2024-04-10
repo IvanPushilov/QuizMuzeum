@@ -13,6 +13,7 @@ export const authLogout = createAsyncThunk('auth/logout', () => api.logoutFetch(
 export const authCheckUser = createAsyncThunk('auth/check-user', () => api.checkUserFetch());
 export const userUpd = createAsyncThunk('profile/update', (obj: FormData) =>
 api.profileUpdateFetch(obj))
+export const userUpdateScore = createAsyncThunk('user/update', (id: number) => api.userUpdateScoreFetch(id))
 
 const authSlice = createSlice({
   name: 'auth',
@@ -45,6 +46,11 @@ const authSlice = createSlice({
       state.user = action.payload;
     })
     .addCase(userUpd.rejected, (state, action) =>{
+      state.message = action.error.message;
+    }).addCase(userUpdateScore.fulfilled, (state, action) => {
+      state.user = action.payload;
+    })
+    .addCase(userUpdateScore.rejected, (state, action) =>{
       state.message = action.error.message;
     })
   }
