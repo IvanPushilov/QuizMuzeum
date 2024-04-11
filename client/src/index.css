@@ -1,4 +1,14 @@
+@font-face {
+  font-family: 'Furore Regular';
+  src: url('../public/fonts/Furore.otf') format('opentype');
+  font-weight: 400; /* Начертание шрифта */
+  font-style: normal; /* Стиль шрифта */
+}
+
+/* Примените шрифт к элементам на вашем сайте */
+
 .main {
+  font-family: 'Furore', sans-serif;
   background-image: url('../public/profileImg/main.png');
   background-repeat: no-repeat;
   background-size: cover;
