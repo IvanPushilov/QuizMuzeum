@@ -1,24 +1,61 @@
+
+.user__score{
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+}
 .game-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid brown;
   height: 500px;
   background-color: rgba(132, 121, 105, 0.1);
+  padding: 10px;  
+
+  
 }
 
 .game-question__title {
-  font-size: 30px;
-    /* Ограничиваем текст по ширине контейнера */
-    width: 700px;
-    /* Разрешаем переносить длинные слова на следующую строку */
-    overflow-wrap: break-word; /* Для поддержки браузеров */
-    word-wrap: break-word; /* Для поддержки IE */
-    /* Запрещаем обрезание текста */
+font-size: 19px;
+    width: 1000px;
+    overflow-wrap: break-word; 
+    word-wrap: break-word; 
     white-space: pre-wrap;
-    /* Добавляем переносы строк */
     word-break: break-all;
+    
+}
+.balli{
+  display: flex;
+  justify-content: end;
+}
+.btn-answer{
+  background-color: rgba(132, 121, 105, 0.1); 
+  border: none;
+  padding: 5px;
+}
+.btn-next{
+  display: flex;
+  justify-content:end;
+ 
+
+}
+.btn-next2, .disabledBtn{
+  padding: 10px 15px 10px 15px;
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.4s ease;
 }
 
-.game-question__border {
-border-bottom: 2px solid brown;
+.btn-next2:hover{
+  padding: 10px 15px 10px 15px;
+  border: none;
+  border-radius: 10px;
+  transform: scale(1.1);
+}
+.btn-answer, .disabledBtn, .btn-next{
+
+  
+}
+.answer-right{
+  display: flex;
+  justify-content: center;
 }
