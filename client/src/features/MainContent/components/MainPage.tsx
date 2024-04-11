@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import type { RootState } from '../../../store/store';
-import FormAddPost from '../../Posts/components/FormAddPost';
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import '../styles/mainPage.css';
@@ -11,7 +10,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 function MainPage(): JSX.Element {
-  const user = useSelector((store: RootState) => store.auth.user);
   const album = useSelector((store: RootState) => store.album.img);
 
   return (

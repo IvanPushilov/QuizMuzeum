@@ -8,7 +8,6 @@
 /* Примените шрифт к элементам на вашем сайте */
 
 body {
-  font-family: 'Furore', sans-serif;
   background-image: url('../public/profileImg/main.png');
   background-repeat: no-repeat;
   background-size: cover;
