@@ -5,6 +5,7 @@ import { RootState, useAppDispatch } from '../../../store/store';
 import { rightAnswer } from '../answersSlice';
 import '../styles/button.css';
 import { userUpdateScore } from '../../Auth/authSlice';
+import '../styles/game.css'
 
 function QuestionItem(): JSX.Element {
   const { tournamentId } = useParams();
@@ -12,8 +13,11 @@ function QuestionItem(): JSX.Element {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const questions = useSelector((store: RootState) => store.questions.questions.filter(question => question.tournament_id === Number(tournamentId)));
+  const questions = useSelector((store: RootState) =>
+    store.questions.questions.filter((question) => question.tournament_id === Number(tournamentId)),
+  );
   const answer = useSelector((store: RootState) => store.answers.answer);
+  const user = useSelector((store: RootState) => store.auth.user)
 
   const [message, setMessage] = useState<string | null>('');
   const [isAnswerVisible, setIsAnswerVisible] = useState<boolean>(false);
@@ -21,7 +25,9 @@ function QuestionItem(): JSX.Element {
 
   console.log(message);
 
-  const sortedQuestions = questions.sort((a, b) => a.tournament_id - b.tournament_id || a.id - b.id);
+  const sortedQuestions = questions.sort(
+    (a, b) => a.tournament_id - b.tournament_id || a.id - b.id,
+  );
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
 
   const hasNextQuestion = currentQuestionIndex < sortedQuestions.length - 1;
@@ -34,7 +40,9 @@ function QuestionItem(): JSX.Element {
       setMessage('');
       setIsAnswerVisible(false); // Скрыть ответ при переходе к следующему вопросу
       const nextQuestionId = sortedQuestions[nextQuestionIndex].id;
-      navigate(`/tournaments/${tournamentId}/questions/${nextQuestionId}?index=${nextQuestionIndex}`);
+      navigate(
+        `/tournaments/${tournamentId}/questions/${nextQuestionId}?index=${nextQuestionIndex}`,
+      );
     }
   };
 
@@ -50,7 +58,6 @@ function QuestionItem(): JSX.Element {
     setMessage(answer);
     setIsAnswerVisible(true); // Показать ответ после выбора
     setIsNextButtonVisible(false); // Скрыть кнопку "Далее" после выбора ответа
-
   };
 
   const question = sortedQuestions[currentQuestionIndex];
@@ -62,30 +69,53 @@ function QuestionItem(): JSX.Element {
   }, []);
 
   return (
-    <>
-      <div>
-        <p>{question.title}</p>
-        <p>{question.price}</p>
-        <form onSubmit={choiceAnswer}>
+    <div className='container'>
+      <div className="game-container">
+        <div className='game-question__border'>
+          <p className="game-question__title">{question.title}</p>
+        </div>
+        <div className="game-question__price">
+          <p>Цена: {question.price} баллов.</p>
+        </div>
+        <form className="game-form" onSubmit={choiceAnswer}>
           {question.Answers.map((answer) => (
-            <div key={answer.id}>
-              <label  htmlFor={`answer_${answer.id}`}>{answer.answer}</label>
-              <input defaultChecked type="radio" id={`answer_${answer.id}`} name="answer" value={answer.id} />
+            <div className="answers-container" key={answer.id}>
+              <label className="answers__answer" htmlFor={`answer_${answer.id}`}>
+                {answer.answer}
+              </label>
+              <input
+                className="answers__checkbox"
+                defaultChecked
+                type="radio"
+                id={`answer_${answer.id}`}
+                name="answer"
+                value={answer.id}
+              />
             </div>
           ))}
-          <button className={message !== '' ? 'disabledBtn' : ''} type='submit'>Ответить</button>
+          <button className={message !== '' ? 'disabledBtn' : ''} type="submit">
+            Ответить
+          </button>
         </form>
         {isAnswerVisible && <div>{answer}</div>}
-      </div>
-      {
-      hasNextQuestion ? (
-        <button className={message === '' ? 'disabledBtn' : ''} type='button' onClick={goToNextQuestion}>
+      {hasNextQuestion ? (
+        <button
+          className={message === '' ? 'disabledBtn' : ''}
+          type="button"
+          onClick={goToNextQuestion}
+        >
           Далее
-        </button>)
-        :
-        (<Link to='/'>Домой</Link>)
-      }
-    </>
+        </button>
+      ) : (
+        <Link to="/">Домой</Link>
+      )}
+           {user && (
+       <div className='user__score'>
+       У вас: {user?.score} очков!
+     </div>
+   )}
+      </div>
+    </div>
   );
 }
 

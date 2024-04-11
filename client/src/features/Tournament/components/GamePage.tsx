@@ -25,14 +25,11 @@ function GamePage(): JSX.Element {
 
   return(
     <div>
-      <div>
+      
       <QuestionItem />
-      </div>
-   {user && (
-       <div>
-       У вас: {user?.score} очков!
-     </div>
-   )}
+ 
+    
+  
     </div>
   ) ;
 }
