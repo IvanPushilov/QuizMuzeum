@@ -15,6 +15,7 @@ import { questionsLoad } from '../features/Tournament/questionsSlice';
 import { useAppDispatch } from '../store/store';
 import { answersLoad } from '../features/Tournament/answersSlice';
 import '../index.css'
+import { albumLoad } from '../features/Album/albumSlice';
 
 function App(): JSX.Element {
 
@@ -26,6 +27,7 @@ function App(): JSX.Element {
     dispatch(postsLoad()).catch(console.log)
     dispatch(questionsLoad()).catch(console.log)
     dispatch(answersLoad()).catch(console.log)
+    dispatch(albumLoad()).catch(console.log)
   }, [])
 
   return (
