@@ -28,8 +28,6 @@ function GamePage(): JSX.Element {
       
       <QuestionItem />
  
-    
-  
     </div>
   ) ;
 }

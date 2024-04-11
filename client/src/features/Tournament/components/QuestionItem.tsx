@@ -69,13 +69,21 @@ function QuestionItem(): JSX.Element {
   }, []);
 
   return (
+    <div>
+ 
+             <div className='user__score'>
+       У вас: {user?.score} очков!
+      </div>
+
+
     <div className='container'>
+
       <div className="game-container">
         <div className='game-question__border'>
           <p className="game-question__title">{question.title}</p>
         </div>
         <div className="game-question__price">
-          <p>Цена: {question.price} баллов.</p>
+          <p className='balli'>Цена: {question.price} баллов.</p>
         </div>
         <form className="game-form" onSubmit={choiceAnswer}>
           {question.Answers.map((answer) => (
@@ -93,14 +101,19 @@ function QuestionItem(): JSX.Element {
               />
             </div>
           ))}
-          <button className={message !== '' ? 'disabledBtn' : ''} type="submit">
+          <button className={message !== '' ? 'disabledBtn' : ' btn-answer'} type="submit">
             Ответить
           </button>
         </form>
-        {isAnswerVisible && <div>{answer}</div>}
-      {hasNextQuestion ? (
+        {isAnswerVisible && <div className='answer-right'>{answer}</div>}
+
+           {user && (
+            <>
+
+     <div className='btn-next'>
+            {hasNextQuestion ? (
         <button
-          className={message === '' ? 'disabledBtn' : ''}
+          className={message === '' ? 'disabledBtn' : ' btn-next2'}
           type="button"
           onClick={goToNextQuestion}
         >
@@ -109,12 +122,13 @@ function QuestionItem(): JSX.Element {
       ) : (
         <Link to="/">Домой</Link>
       )}
-           {user && (
-       <div className='user__score'>
-       У вас: {user?.score} очков!
      </div>
+     
+
+     </>
    )}
       </div>
+    </div>
     </div>
   );
 }
