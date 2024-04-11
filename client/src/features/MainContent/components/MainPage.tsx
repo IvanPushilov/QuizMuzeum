@@ -65,7 +65,9 @@ function MainPage(): JSX.Element {
           </div>
         </div>
       </div>
-      
+      <div>
+        {user?.role === 'admin' && <FormAddPost />}
+      </div>
     </>
   );
 }
