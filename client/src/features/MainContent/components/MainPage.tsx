@@ -15,6 +15,8 @@ function MainPage(): JSX.Element {
   const user = useSelector((store: RootState) => store.auth.user);
   const album = useSelector((store: RootState) => store.album.img);
 
+  
+
   return (
 <>
       <div className="container">
@@ -62,7 +64,7 @@ function MainPage(): JSX.Element {
       </div>
       <div>
         <ul></ul>
-        {/* <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div> */}
+        <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div>
         {user?.role === 'admin' && <FormAddPost />}
       </div>
       </>

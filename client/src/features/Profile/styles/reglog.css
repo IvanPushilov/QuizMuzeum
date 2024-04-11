@@ -3,3 +3,57 @@
     border: 0.5rem;
     color: black;
   }
+
+  .container-profile{
+    display: flex;
+    justify-content: center;
+
+
+    
+  }
+  .profile{
+
+  background-color: rgba(128, 128, 128, 0.199);
+  padding: 25px;
+  border-radius: 15px;
+  }
+
+  .name-profile, .score-user, .email-profile{
+    padding: 5px;
+  }
+  .btn-update-profile{
+
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgba(128, 128, 128, 0.199);
+    cursor: pointer;
+  }
+
+  .btn-update-profile:hover{
+    background-color: rgba(189, 190, 170, 0.411);
+
+      
+
+  }
+
+.upd__form__containerP{
+  padding-left: 20px;
+}
+
+.upd__form{
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+.input-order{
+  margin: 5px 0px 5px 0px;
+  padding: 3px;
+  border-radius: 5px;
+}
+.input-order-img{
+  cursor: pointer;
+}
+.btn-tw{
+  margin-top: 20px;
+}

@@ -13,6 +13,8 @@ function PostPage(): JSX.Element {
     store.posts.posts.find((post) => post.id === Number(postId)),
   );
   const comments = useSelector((store: RootState) => store.comment.comment);
+  console.log(comments);
+  
   const dispatch = useAppDispatch();
 
   const id = postId;
