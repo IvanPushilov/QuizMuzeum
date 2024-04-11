@@ -17,6 +17,7 @@ import { answersLoad } from '../features/Tournament/answersSlice';
 import '../index.css'
 import { albumLoad } from '../features/Album/albumSlice';
 import TournamentPage from '../features/Tournament/components/TournamentPage';
+import PostsPage from '../features/Posts/components/PostsPage';
 
 
 function App(): JSX.Element {
@@ -40,6 +41,7 @@ function App(): JSX.Element {
   <Route path='sign-in' element={<AuthorisationPage/>} />
   <Route path='profile' element={<Profile/>}/>
   <Route path='tournaments' element={<TournamentsPage/>}/>
+  <Route path='posts' element={<PostsPage/>}/>
   <Route path='posts/:postId' element={<PostPage/>}/>
   <Route path='tournaments/:tournamentId' element={<TournamentPage/>}/>
   <Route path='tournaments/:tournamentId/questions/:questionId' element={<GamePage/>}/>
