@@ -41,12 +41,14 @@ const profileUpdateFetch = (e: React.FormEvent<HTMLFormElement>): void => {
             placeholder="email"
             onChange={(e) => setEmail(e.target.value)}
           />
+          <label>Изменить фото профиля:
           <input
             className="input-order"
             type='file'
             placeholder="img"
             onChange={(e) => setImg(e.target.files)}
           />
+          </label>
           <button type="submit">Изменить</button>
         </form>
       </div>
