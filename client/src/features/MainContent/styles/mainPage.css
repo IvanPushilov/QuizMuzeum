@@ -1,5 +1,6 @@
 *{
     font-family: 'Furore Regular', sans-serif;
+    letter-spacing: 1px;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
@@ -62,6 +63,11 @@ text-align: left;
 
 .container-div{
     display: flex;
+    margin-right: 20px;
+}
+
+.cont-tournament{
+    padding-right: 20px;
 }
 
 .cont-auth{
@@ -72,6 +78,8 @@ text-align: left;
     color: black;
     
 }
+
+
 
 
 

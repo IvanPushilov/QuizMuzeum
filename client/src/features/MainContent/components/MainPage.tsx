@@ -10,17 +10,15 @@ import '../styles/mainpage.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-
 function MainPage(): JSX.Element {
   const user = useSelector((store: RootState) => store.auth.user);
   const album = useSelector((store: RootState) => store.album.img);
 
-  
-
   return (
-<>
+    <>
       <div className="container">
         <div className="img-pos">
+
         <Swiper
         autoplay={{
           delay: 3000,
@@ -41,6 +39,7 @@ function MainPage(): JSX.Element {
           ))}
         </div>
       </Swiper>
+
         </div>
 
         <div className="container_main">
@@ -50,14 +49,21 @@ function MainPage(): JSX.Element {
           </div>
           <p className="date">9 - 11 ноября</p>
           <div className="container-div">
-            <div className="cont-auth">
+            <div className="cont-tournament">
               <Link className="link_auth" to="/tournaments">
                 Турниры
               </Link>
             </div>
-            <Link className="link_auth" to="/auth">
-              Вход / Регистрация
+            <div className="cont-auth">
+              <Link className="link_auth" to="/auth">
+                Вход / Регистрация
+              </Link>
+            </div>
+            <div className='cont-news'>
+            <Link className="link_auth" to="/posts">
+              Новости
             </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -66,7 +72,7 @@ function MainPage(): JSX.Element {
         <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div>
         {user?.role === 'admin' && <FormAddPost />}
       </div>
-      </>
+    </>
   );
 }
 
