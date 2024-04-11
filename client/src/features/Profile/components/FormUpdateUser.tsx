@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { useAppDispatch } from '../../../store/store'
 import { userUpd } from '../../Auth/authSlice';
+import '../styles/reglog.css'
 
 function FormUpdateUser():JSX.Element {
   
@@ -41,15 +42,15 @@ const profileUpdateFetch = (e: React.FormEvent<HTMLFormElement>): void => {
             placeholder="email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label>Изменить фото профиля:
+          <label>Фото:
           <input
-            className="input-order"
+            className="input-order-img"
             type='file'
             placeholder="img"
             onChange={(e) => setImg(e.target.files)}
           />
           </label>
-          <button type="submit">Изменить</button>
+          <button className='btn-update-profile btn-tw' type="submit">Изменить</button>
         </form>
       </div>
     </div>

@@ -36,3 +36,14 @@ height: 79px;
   height: 167px;
   
 }
+
+
+
+.link-vk:hover {
+fill: blue;
+}
+
+
+li{
+  padding-left: 50px;
+}

@@ -7,9 +7,15 @@
 
 /* Примените шрифт к элементам на вашем сайте */
 
-.main {
+body {
   font-family: 'Furore', sans-serif;
   background-image: url('../public/profileImg/main.png');
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+button{
+  cursor: pointer;
 }
