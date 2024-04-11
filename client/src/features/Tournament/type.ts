@@ -4,6 +4,7 @@ export type Tournament = {
   description: string;
   time: string;
   img: string;
+  info: string;
 }
 
 export type TournamentItemId = Tournament['id']
