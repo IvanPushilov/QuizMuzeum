@@ -63,7 +63,7 @@ function MainPage(): JSX.Element {
       </div>
       <div>
         <ul></ul>
-        {/* <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div> */}
+        <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div>
         {user?.role === 'admin' && <FormAddPost />}
       </div>
       </>

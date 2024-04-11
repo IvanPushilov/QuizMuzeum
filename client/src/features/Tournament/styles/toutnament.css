@@ -1,0 +1,41 @@
+.container-tour{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 100px;
+}
+.container-card{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.068);
+    padding: 30px;
+    border-radius: 20px;
+    width: 800px;
+    transition: transform 0.3s ease
+    
+}
+.container-card:hover{
+
+    transform: scale(1.1);
+}
+
+.img-tour{
+    width: 400px;
+    border-radius: 13px;
+
+    
+}
+.container-info{
+        padding-left: 20px;
+}
+
+.info{
+    padding-bottom: 20px;
+}
+.link-tour{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
