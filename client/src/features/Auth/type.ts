@@ -9,7 +9,7 @@ export type User = {
   img: string;
 }
 
-export type UserForRegistration = Omit<User, 'id' | 'score' | 'role'>
+export type UserForRegistration = Omit<User, 'id' | 'score' | 'role' | 'img'>
 export type UserForAuthorisation = Pick<User, 'email' | 'password'>
 
 export type StateAuth = {
