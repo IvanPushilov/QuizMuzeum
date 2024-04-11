@@ -1,0 +1,24 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid brown;
+  height: 500px;
+  background-color: rgba(132, 121, 105, 0.1);
+}
+
+.game-question__title {
+  font-size: 30px;
+    /* Ограничиваем текст по ширине контейнера */
+    width: 700px;
+    /* Разрешаем переносить длинные слова на следующую строку */
+    overflow-wrap: break-word; /* Для поддержки браузеров */
+    word-wrap: break-word; /* Для поддержки IE */
+    /* Запрещаем обрезание текста */
+    white-space: pre-wrap;
+    /* Добавляем переносы строк */
+    word-break: break-all;
+}
+
+.game-question__border {
+border-bottom: 2px solid brown;
+}
