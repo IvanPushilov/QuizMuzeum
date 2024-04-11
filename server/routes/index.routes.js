@@ -6,12 +6,12 @@ const userApiRouter = require('./api/userApi')
 const questionsApiRouter = require('./api/quiestionsApi')
 const answersApiRouter = require('./api/answersApi')
 const commentsApi = require('./api/commentApi')
-
+const albumApiRouter = require('./api/albumApi')
 
 router.use('/api', mainpageApi)
 router.use('/api/auth', authApiRouter)
 router.use('/api/tournaments', tournamentsApiRouter)
-
+router.use('/api/album', albumApiRouter)
 router.use('/api/profile', userApiRouter)
 router.use('/api/questions', questionsApiRouter)
 router.use('/api/answers', answersApiRouter)
