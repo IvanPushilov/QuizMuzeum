@@ -1,19 +1,21 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import type { RootState } from '../../../store/store';
-import PostItem from '../../Posts/components/PostItem';
 import FormAddPost from '../../Posts/components/FormAddPost';
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import '../styles/mainPage.css';
 import '../styles/mainpage.scss';
 import 'swiper/css';
+import 'swiper/css/navigation';
+
 
 function MainPage(): JSX.Element {
-  const posts = useSelector((store: RootState) => store.posts.posts);
   const user = useSelector((store: RootState) => store.auth.user);
   const album = useSelector((store: RootState) => store.album.img);
+
+  
 
   return (
 <>
@@ -21,15 +23,14 @@ function MainPage(): JSX.Element {
         <div className="img-pos">
         <Swiper
         autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
+          delay: 3000,
+          disableOnInteraction: true,
         }}
         modules={[Autoplay, Navigation, Pagination, A11y]}
-        spaceBetween={0}
         slidesPerView={1}
         slidesPerGroup={1}
-        navigation
-        pagination={{ clickable: true }}
+        navigation={true}
+        pagination={true}
         onSlideChange={() => console.log('slide change')}
       >
         <div className="records__container">
