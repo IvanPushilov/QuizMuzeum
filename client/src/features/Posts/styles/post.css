@@ -1,15 +1,37 @@
-.container-postcard {
+.container-posts{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 100px;
+}
+
+.container-postcard:hover{
+
+    transform: scale(1.1);
+}
+
+.container-postcard{
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.068);
+    padding: 30px;
+    border-radius: 20px;
+    width: 800px;
+    transition: transform 0.3s ease
 }
+
 .img {
     width: 400px;
+    border-radius: 13px;
 }
 .postcard-info {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    padding-left: 20px;
+}
+.info{
+    padding-bottom: 20px;
+}
+.link-post{
+    text-decoration: none;
+    color: black;
 }

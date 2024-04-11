@@ -31,21 +31,23 @@ const FormAddPost = (): JSX.Element => {
           <input
             className="input-order"
             value={title}
-            placeholder="title"
+            placeholder="Заголовок"
             onChange={(e) => setTitle(e.target.value)}
           />
           <input
             className="input-order"
             value={description}
-            placeholder="description"
+            placeholder="текст публикации"
             onChange={(e) => setDescription(e.target.value)}
           />
+          <label>Фото
           <input
             className="input-order"
             type='file'
             placeholder="img"
             onChange={(e) => setImg(e.target.files)}
           />
+          </label>
           <button type="submit">Добавить</button>
         </form>
       </div>

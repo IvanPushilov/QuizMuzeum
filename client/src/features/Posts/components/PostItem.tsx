@@ -5,17 +5,19 @@ import '../styles/post.css';
 
 function PostItem({ post }: { post: Post }): JSX.Element {
   return (
-    <div className='container-postcard'>
-      <Link onClick={() => window.scrollTo(0, 0)} to={`/posts/${post.id}`}>
-        <div className='img'>
-          <img src={post.img} alt="post" />
+    <Link className="link-post" onClick={() => window.scrollTo(0, 0)} to={`/posts/${post.id}`}>
+      <div className="container-postcard">
+        <div>
+          <div>
+            <img className="img" src={post.img} alt="post" />
+          </div>
+          <div className="postcard-info"></div>
+          <h1 className="info">{post.title}</h1>
+          <p className="info">{post.description}</p>
+          <p className="info">{post.date}</p>
         </div>
-        <div className='postcard-info'></div>
-        <h1>{post.title}</h1>
-        <p>{post.description}</p>
-        <p>{post.date}</p>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
 
