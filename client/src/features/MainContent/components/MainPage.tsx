@@ -16,7 +16,7 @@ function MainPage(): JSX.Element {
   const album = useSelector((store: RootState) => store.album.img);
 
   return (
-    <div>
+<>
       <div className="container">
         <div className="img-pos">
         <Swiper
@@ -65,7 +65,7 @@ function MainPage(): JSX.Element {
         {/* <div>{posts.map((post)=><PostItem post={post} key={post.id}/>)}</div> */}
         {user?.role === 'admin' && <FormAddPost />}
       </div>
-    </div>
+      </>
   );
 }
 
