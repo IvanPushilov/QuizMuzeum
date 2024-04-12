@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Tournament } from '../type'
 import { Link } from 'react-router-dom'
+import '../styles/toutnament.css'
 
 
 function TournamentItem({tournament}: {tournament: Tournament}): JSX.Element {
@@ -16,7 +17,7 @@ function TournamentItem({tournament}: {tournament: Tournament}): JSX.Element {
     <div className='container-info' >
     <h1 className='info'>{tournament.title}</h1>
     <p className='info'>{tournament.time}</p>
-    <p className=''>{tournament.description}</p>
+    <p className='info'>{tournament.description}</p>
     </div>
 
     </div>

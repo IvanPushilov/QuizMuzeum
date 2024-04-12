@@ -7,30 +7,38 @@
 .game-container {
   display: flex;
   flex-direction: column;
-  height: 500px;
+  width: 70%; 
+  height: 50%;
   background-color: rgba(132, 121, 105, 0.1);
   padding: 10px;  
+  border-radius: 26px;
 
   
 }
+.answers__answer{
+  padding-right: 20px;
+}
+
+.answers-container{
+  padding: 5px;
+}
 
 .game-question__title {
-font-size: 19px;
+font-size: 30px;
     width: 1000px;
     overflow-wrap: break-word; 
     word-wrap: break-word; 
-    white-space: pre-wrap;
-    word-break: break-all;
-    
+    white-space: pre-wrap;    
 }
 .balli{
   display: flex;
   justify-content: end;
 }
 .btn-answer{
-  background-color: rgba(132, 121, 105, 0.1); 
+  background-color: rgb(238,123,26); 
   border: none;
-  padding: 5px;
+  border-radius: 9px;
+  padding: 10px 25px;
 }
 .btn-next{
   display: flex;
@@ -45,17 +53,34 @@ font-size: 19px;
   transition: transform 0.4s ease;
 }
 
-.btn-next2:hover{
-  padding: 10px 15px 10px 15px;
+.btn-next2 {
+  padding: 10px 15px;
   border: none;
   border-radius: 10px;
+  background-color: rgb(238,123,26); /* Оранжевый цвет по умолчанию */
+  transition: transform 0.3s; /* Добавим плавное изменение масштаба при наведении */
+}
+
+.btn-next2:hover {
   transform: scale(1.1);
 }
-.btn-answer, .disabledBtn, .btn-next{
 
-  
+.btn-answer, .disabledBtn, .btn-next{
+  transition: transform 0.4s ease;
 }
 .answer-right{
   display: flex;
   justify-content: center;
+}
+.linkHome{
+  display: inline-block;
+  padding: 10px 25px;
+  text-decoration: none;
+  border: 2px solid rgb(238,123,26);
+  border-radius: 9px;
+  background-color: rgb(234,234,230);
+  color: black;
+}
+.game-form{
+  padding: 20px;
 }

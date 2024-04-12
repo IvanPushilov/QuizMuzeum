@@ -11,33 +11,32 @@ import 'swiper/css/navigation';
 
 function MainPage(): JSX.Element {
   const album = useSelector((store: RootState) => store.album.img);
+  const user = useSelector((store: RootState) => store.auth.user);
 
   return (
     <>
       <div className="container">
         <div className="img-pos">
-
-        <Swiper
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: true,
-        }}
-        modules={[Autoplay, Navigation, Pagination, A11y]}
-        slidesPerView={1}
-        slidesPerGroup={1}
-        navigation={true}
-        pagination={true}
-        onSlideChange={() => console.log('slide change')}
-      >
-        <div className="records__container">
-          {album.map((img) => (
-            <SwiperSlide key={img?.id}>
-              <img className='album-image' src={img.img} alt="" />
-            </SwiperSlide>
-          ))}
-        </div>
-      </Swiper>
-
+          <Swiper
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: true,
+            }}
+            modules={[Autoplay, Navigation, Pagination, A11y]}
+            slidesPerView={1}
+            slidesPerGroup={1}
+            navigation={true}
+            pagination={true}
+            onSlideChange={() => console.log('slide change')}
+          >
+            <div className="records__container">
+              {album.map((img) => (
+                <SwiperSlide key={img?.id}>
+                  <img className="album-image" src={img.img} alt="" />
+                </SwiperSlide>
+              ))}
+            </div>
+          </Swiper>
         </div>
 
         <div className="container_main">
@@ -52,15 +51,17 @@ function MainPage(): JSX.Element {
                 Турниры
               </Link>
             </div>
-            <div className="cont-auth">
-              <Link className="link_auth" to="/auth">
-                Вход / Регистрация
+            {!user && (
+              <div className="cont-auth">
+                <Link className="link_auth" to="/auth">
+                  Вход / Регистрация
+                </Link>
+              </div>
+            )}
+            <div className="cont-news">
+              <Link className="link_auth" to="/posts">
+                Новости
               </Link>
-            </div>
-            <div className='cont-news'>
-            <Link className="link_auth" to="/posts">
-              Новости
-            </Link>
             </div>
           </div>
         </div>

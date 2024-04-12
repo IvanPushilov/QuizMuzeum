@@ -28,6 +28,7 @@ const profileUpdateFetch = (e: React.FormEvent<HTMLFormElement>): void => {
   return (
     <div className="upd__form__container">
       <div className="form-upd-user">
+        <label className="upd_title">Изменить профиль</label>
         <form className="upd__form" onSubmit={profileUpdateFetch}>
          
           <input
