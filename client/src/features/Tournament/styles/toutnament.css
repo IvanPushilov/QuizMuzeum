@@ -1,17 +1,18 @@
 .container-tour{
     display: flex;
-    justify-content: space-around;
+    justify-content:space-around;
     padding-top: 100px;
 }
 .container-card{
     display: flex;
+    align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.068);
     padding: 30px;
     border-radius: 20px;
-    width: 800px;
-    transition: transform 0.3s ease
-    
+    width: 1000px;
+    transition: transform 0.3s ease;
+    margin: 0 auto;
 }
 .container-card:hover{
 
@@ -34,6 +35,11 @@
 .link-tour{
     text-decoration: none;
     color: black;
+}
+.btn{
+    background-color: rgb(238,123,26); 
+    border: none;
+    padding: 5px;
 }
 
 

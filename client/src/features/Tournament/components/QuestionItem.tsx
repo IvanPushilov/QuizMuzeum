@@ -5,7 +5,7 @@ import { RootState, useAppDispatch } from '../../../store/store';
 import { rightAnswer } from '../answersSlice';
 import '../styles/button.css';
 import { userUpdateScore } from '../../Auth/authSlice';
-import '../styles/game.css'
+import '../styles/game.css';
 
 function QuestionItem(): JSX.Element {
   const { tournamentId } = useParams();
@@ -17,7 +17,7 @@ function QuestionItem(): JSX.Element {
     store.questions.questions.filter((question) => question.tournament_id === Number(tournamentId)),
   );
   const answer = useSelector((store: RootState) => store.answers.answer);
-  const user = useSelector((store: RootState) => store.auth.user)
+  const user = useSelector((store: RootState) => store.auth.user);
 
   const [message, setMessage] = useState<string | null>('');
   const [isAnswerVisible, setIsAnswerVisible] = useState<boolean>(false);
@@ -70,65 +70,57 @@ function QuestionItem(): JSX.Element {
 
   return (
     <div>
- 
-             <div className='user__score'>
-       У вас: {user?.score} очков!
-      </div>
+      <div className="user__score">У вас: {user?.score} очков!</div>
 
+      <div className="container">
+        <div className="game-container">
+          <div className="game-question__border">
+            <p className="game-question__title">{question.title}</p>
+          </div>
+          <div className="game-question__price">
+            <p className="balli">Цена: {question.price} баллов.</p>
+          </div>
+          <form className="game-form" onSubmit={choiceAnswer}>
+            {question.Answers.map((answer) => (
+              <div className="answers-container" key={answer.id}>
+                <label className="answers__answer" htmlFor={`answer_${answer.id}`}>
+                  {answer.answer}
+                </label>
+                <input
+                  className="answers__checkbox"
+                  defaultChecked
+                  type="radio"
+                  id={`answer_${answer.id}`}
+                  name="answer"
+                  value={answer.id}
+                />
+              </div>
+            ))}
+            <button className={message !== '' ? 'disabledBtn' : ' btn-answer'} type="submit">
+              Ответить
+            </button>
+          </form>
+          {isAnswerVisible && <div className="answer-right">{answer}</div>}
 
-    <div className='container'>
-
-      <div className="game-container">
-        <div className='game-question__border'>
-          <p className="game-question__title">{question.title}</p>
-        </div>
-        <div className="game-question__price">
-          <p className='balli'>Цена: {question.price} баллов.</p>
-        </div>
-        <form className="game-form" onSubmit={choiceAnswer}>
-          {question.Answers.map((answer) => (
-            <div className="answers-container" key={answer.id}>
-              <label className="answers__answer" htmlFor={`answer_${answer.id}`}>
-                {answer.answer}
-              </label>
-              <input
-                className="answers__checkbox"
-                defaultChecked
-                type="radio"
-                id={`answer_${answer.id}`}
-                name="answer"
-                value={answer.id}
-              />
-            </div>
-          ))}
-          <button className={message !== '' ? 'disabledBtn' : ' btn-answer'} type="submit">
-            Ответить
-          </button>
-        </form>
-        {isAnswerVisible && <div className='answer-right'>{answer}</div>}
-
-           {user && (
+          {user && (
             <>
-
-     <div className='btn-next'>
-            {hasNextQuestion ? (
-        <button
-          className={message === '' ? 'disabledBtn' : ' btn-next2'}
-          type="button"
-          onClick={goToNextQuestion}
-        >
-          Далее
-        </button>
-      ) : (
-        <Link to="/">Домой</Link>
-      )}
-     </div>
-     
-
-     </>
-   )}
+              <div className="btn-next">
+                {hasNextQuestion ? (
+                  <button
+                    className={message === '' ? 'disabledBtn' : ' btn-next2'}
+                    type="button"
+                    onClick={goToNextQuestion}
+                  >
+                    Далее
+                  </button>
+                ) : (
+                  <Link className='linkHome' to="/">Домой</Link>
+                )}
+              </div>
+            </>
+          )}
+        </div>
       </div>
-    </div>
     </div>
   );
 }
