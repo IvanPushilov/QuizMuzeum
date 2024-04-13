@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 import FormAddPost from '../../Posts/components/FormAddPost';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import SwiperCore from 'swiper/core';
+import { Pagination, Mousewheel } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import '../styles/post.css';
@@ -13,16 +14,16 @@ import '../styles/post.css';
 function PostsPage(): JSX.Element {
   const user = useSelector((store: RootState) => store.auth.user);
   const posts = useSelector((store: RootState) => store.posts.posts);
+  SwiperCore.use([Mousewheel, Pagination]);
   return (
-   
-    <div className='container-posts'>
-       <div>
-        {user?.role === 'admin' && <p>Добавить пост</p> && <FormAddPost />}
-      </div>
+    <div className="container-posts">
+      <div>{user?.role === 'admin' && <p>Добавить пост</p> && <FormAddPost />}</div>
       <Swiper
+      mousewheel
         slidesPerView={1}
         spaceBetween={10}
         pagination={{
+          el: '.swiper-pagination',
           clickable: true,
         }}
         breakpoints={{
@@ -42,13 +43,15 @@ function PostsPage(): JSX.Element {
         modules={[Pagination]}
         className="mySwiper"
       >
-              {posts.map((post) => (
-                <div className='post__item' >
-       <SwiperSlide> <PostItem key={post.id} post={post} /></SwiperSlide>
-       </div>
-      ))}
+        {posts.map((post) => (
+          <div className="post__item">
+            <SwiperSlide>
+            
+              <PostItem key={post.id} post={post} />
+            </SwiperSlide>
+          </div>
+        ))}
       </Swiper>
-
     </div>
   );
 }
