@@ -4,11 +4,10 @@
   justify-content: center;
   font-size: 40px;
 }
+
 .game-container {
   display: flex;
   flex-direction: column;
-  width: 70%; 
-  height: 50%;
   background-color: rgba(132, 121, 105, 0.1);
   padding: 10px;  
   border-radius: 26px;
@@ -24,11 +23,11 @@
 }
 
 .game-question__title {
-font-size: 30px;
-    width: 1000px;
-    overflow-wrap: break-word; 
+font-size: 25px;
+    width: 1200px;
     word-wrap: break-word; 
-    white-space: pre-wrap;    
+    padding: 20px;
+
 }
 .balli{
   display: flex;
@@ -40,12 +39,7 @@ font-size: 30px;
   border-radius: 9px;
   padding: 10px 25px;
 }
-.btn-next{
-  display: flex;
-  justify-content:end;
- 
 
-}
 .btn-next2, .disabledBtn{
   padding: 10px 15px 10px 15px;
   border: none;
@@ -71,6 +65,7 @@ font-size: 30px;
 .answer-right{
   display: flex;
   justify-content: center;
+  
 }
 .linkHome{
   display: inline-block;
@@ -83,4 +78,8 @@ font-size: 30px;
 }
 .game-form{
   padding: 20px;
+}
+.cont-btn{
+  display: flex;
+  justify-content: center;
 }

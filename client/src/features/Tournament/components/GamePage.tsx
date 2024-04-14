@@ -14,7 +14,6 @@ function GamePage(): JSX.Element {
     dispatch(getQuestionId(questionId)).catch(console.log);
   }, []);
 
-  const user = useSelector((store: RootState) => store.auth.user)
   const currentGame = useSelector((store: RootState) =>
     store.tournaments.tournaments.find((tournament) => tournament.id === Number(tournamentId)),
   );

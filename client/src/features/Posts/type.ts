@@ -1,3 +1,5 @@
+import { User } from "../Auth/type";
+
 export type Post = {
     id: number;
     title: string;
@@ -17,6 +19,7 @@ export type Comment = {
   title: string;
   post_id: number
   date:string
+  User:User
 
 }
 

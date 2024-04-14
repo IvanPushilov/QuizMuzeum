@@ -27,6 +27,7 @@ router.get('/:id', async (req, res) => {
 	try {
 		const { id } = req.params;
 		const comments = await Comment.findAll({
+			include: { model: User },
 			where: { post_id: +id },
 		});
 		res.json(comments);

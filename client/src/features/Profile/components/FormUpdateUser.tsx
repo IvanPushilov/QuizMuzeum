@@ -51,7 +51,7 @@ const profileUpdateFetch = (e: React.FormEvent<HTMLFormElement>): void => {
             onChange={(e) => setImg(e.target.files)}
           />
           </label>
-          <button className='btn-update-profile btn-tw' type="submit">Изменить</button>
+          <button className='btn-update-profile btn-next2' type="submit">Изменить</button>
         </form>
       </div>
     </div>
