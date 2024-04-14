@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import type { RootState } from '../../../store/store';
 import { useAppDispatch } from '../../../store/store';
 import { commentsAddThunk, commentsLoadThunk } from '../commentsSlice';
+import {postDel} from '../postsSlice'
 import CommentItem from './CommentItem';
 import '../styles/comment.css'
 import '../styles/post.css';
+
 
 
 function PostPage(): JSX.Element {
@@ -17,8 +19,9 @@ function PostPage(): JSX.Element {
   );
   const comments = useSelector((store: RootState) => store.comment.comment);
   console.log(comments);
-  
+  const user = useSelector((store: RootState) => store.auth.user);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const id = postId;
 
@@ -39,6 +42,11 @@ function PostPage(): JSX.Element {
     dispatch(commentsAddThunk(obj)).catch(console.log);
   };
 
+const postDelete = ():void => {
+  dispatch(postDel(selectedPost?.id)).catch(console.log);
+  navigate('/posts');
+}
+
   return (
     <div className='container-postpage'>
       <div>
@@ -50,8 +58,12 @@ function PostPage(): JSX.Element {
       <p className='info'>{selectedPost.description}</p>
       <p className='info'>{selectedPost.date}</p>
       </div>
-      <button type="button">del</button>
-      <button type="button">upd</button>
+      <div>{user?.role === 'admin' ?
+      <div>
+      <button onClick={postDelete} type="button">Удалить</button>
+      
+      </div> : null} 
+  </div>
       </div>
       <div>
         

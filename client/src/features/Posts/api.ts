@@ -17,6 +17,14 @@ export const postAddFetch = async (obj: FormData): Promise<Post> => {
   return data.post;
 };
 
+export const postDelFetch = async (id: number): Promise<Post> => {
+  const res = await fetch(`/api/posts/${id}`, {
+    method: 'delete',
+  });
+  const data = await res.json();
+  return data.post;
+}
+
 export const commentAddfetch = async (obj: CommentFetch): Promise<Comment> => {
   const res = await fetch('/api/comments', {
     method: 'post',
