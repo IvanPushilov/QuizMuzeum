@@ -11,13 +11,9 @@
     padding: 30px;
     border-radius: 20px;
     width: 1000px;
-    transition: transform 0.3s ease;
     margin: 0 auto;
 }
-.container-card:hover{
 
-    transform: scale(1.1);
-}
 
 .img-tour{
     width: 400px;

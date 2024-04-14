@@ -17,23 +17,18 @@
   padding: 25px;
   border-radius: 15px;
   }
-
+.img-profile{
+  width: 300px;
+}
   .name-profile, .score-user, .email-profile{
     padding: 5px;
   }
   .btn-update-profile{
-
+    margin-top: 15px;
     border-radius: 5px;
     padding: 10px;
     background-color: rgba(128, 128, 128, 0.199);
     cursor: pointer;
-  }
-
-  .btn-update-profile:hover{
-    background-color: rgba(189, 190, 170, 0.411);
-
-      
-
   }
 
 .upd__form__containerP{

@@ -70,7 +70,9 @@ function QuestionItem(): JSX.Element {
 
   return (
     <div>
+
       <div className="user__score">У вас: {user?.score} очков!</div>
+      {isAnswerVisible && <p className="answer-right">{answer}</p>}
 
       <div className="container">
         <div className="game-container">
@@ -100,7 +102,8 @@ function QuestionItem(): JSX.Element {
               Ответить
             </button>
           </form>
-          {isAnswerVisible && <div className="answer-right">{answer}</div>}
+          <div className='cont-btn'>
+
 
           {user && (
             <>
@@ -117,8 +120,10 @@ function QuestionItem(): JSX.Element {
                   <Link className='linkHome' to="/">Домой</Link>
                 )}
               </div>
+              
             </>
           )}
+        </div>
         </div>
       </div>
     </div>

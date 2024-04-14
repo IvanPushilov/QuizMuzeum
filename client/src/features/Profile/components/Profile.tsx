@@ -13,11 +13,11 @@ function Profile ():JSX.Element {
     <div className='container-profile'>
       <div className='profile'>
 
-      <img src={user?.img} alt="img" />
+      <img className='img-profile' src={user?.img} alt="img" />
     <p className='name-profile'>Имя: {user?.name}</p>
     <p className='score-user'>Очки: {user?.score}</p>
     <p className='email-profile'>Почта: {user?.email}</p>
-    <button className='btn-update-profile' onClick={() => setOpen((prev) => !prev)} type='button'>Редактировать профиль</button>
+    <button className='btn-next2' onClick={() => setOpen((prev) => !prev)} type='button'>Редактировать профиль</button>
     </div>
     <div>    {open === true && <FormUpdateUser/>}</div>
 

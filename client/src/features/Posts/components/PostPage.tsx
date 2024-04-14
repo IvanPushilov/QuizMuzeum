@@ -5,6 +5,7 @@ import type { RootState } from '../../../store/store';
 import { useAppDispatch } from '../../../store/store';
 import { commentsAddThunk, commentsLoadThunk } from '../commentsSlice';
 import CommentItem from './CommentItem';
+import '../styles/comment.css'
 
 function PostPage(): JSX.Element {
   const { postId } = useParams();
@@ -37,7 +38,8 @@ function PostPage(): JSX.Element {
   };
 
   return (
-    <div>
+    <div className='container-postpage'>
+      <div>
       <div>
         <img src={selectedPost.img} alt="post" />
       </div>
@@ -47,9 +49,16 @@ function PostPage(): JSX.Element {
 
       <button type="button">del</button>
       <button type="button">upd</button>
+      </div>
       <div>
+        
         <p>Коментарии</p>
-        <form onSubmit={commentAdd}>
+        <div className='comment-main-container'>
+        {comments.map((comment) => (
+          <CommentItem comment={comment} key={comment.id} />
+        ))}
+        </div>
+        <form className='form-comment' onSubmit={commentAdd}>
           <input
             className="input-comment"
             value={commentValue}
@@ -57,11 +66,9 @@ function PostPage(): JSX.Element {
             onChange={(e) => setComment(e.target.value)}
             placeholder="Оставить комментарий..."
           />
-          <button type="submit">Поделиться</button>
+          <button className='btn' type="submit">Поделиться</button>
         </form>
-        {comments.map((comment) => (
-          <CommentItem comment={comment} key={comment.id} />
-        ))}
+
       </div>
     </div>
   );

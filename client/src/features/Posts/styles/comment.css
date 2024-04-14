@@ -1,0 +1,37 @@
+.comment-main-container{
+        width: 325px;    
+        height: 300px;        
+        overflow-y: scroll;    
+        border: 1px solid #ccc; 
+        padding: 10px;         
+        background-color: rgba(228, 225, 222, 0.377);
+        border-radius: 10px;
+      
+}
+.title-comment{
+    padding: 3px;
+    font-size: 13px;
+    word-break: break-all;
+}
+.img-comments{
+    height: 25px;
+    width: 25px;
+    border-radius: 40px;
+}
+.container-postpage{
+    display: flex;
+    justify-content: space-around;
+}
+.cont-title-name{
+    display: flex;
+}
+.input-comment{
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.form-comment{
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
