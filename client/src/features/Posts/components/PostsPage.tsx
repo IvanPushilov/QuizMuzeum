@@ -17,7 +17,7 @@ function PostsPage(): JSX.Element {
   SwiperCore.use([Mousewheel, Pagination]);
   return (
     <div className="container-posts">
-      <div>{user?.role === 'admin' && <p>Добавить пост</p> && <FormAddPost />}</div>
+      <div>{user?.role === 'admin' ? <div><p>Добавить пост</p>  <FormAddPost/></div> : null}</div>
       <Swiper
       mousewheel
         slidesPerView={1}

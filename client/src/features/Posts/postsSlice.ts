@@ -15,6 +15,9 @@ export const postsLoad = createAsyncThunk('posts/load', () =>
  export const postAdd = createAsyncThunk('post/add', (obj: FormData) =>
   api.postAddFetch(obj))
 
+  export const postDel = createAsyncThunk('post/del', (id: number) =>
+  api.postDelFetch(id))
+
 const postsSlice = createSlice({
     name: 'posts',
     initialState,
@@ -32,6 +35,12 @@ const postsSlice = createSlice({
       })
       .addCase(postAdd.rejected, (state, action) => {
         state.message = action.error.message;
+      })
+      .addCase(postDel.fulfilled, (state, action) => {
+        state.posts = state.posts.filter((post) => post.id !== action.payload.id)
+      })
+      .addCase(postDel.rejected, (state, action) => {
+        state.message = action.error.message
       })
     }
 })

@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import type { RootState } from '../../../store/store';
 import { useAppDispatch } from '../../../store/store';
 import { commentsAddThunk, commentsLoadThunk } from '../commentsSlice';
+import {postDel} from '../postsSlice'
 import CommentItem from './CommentItem';
 import '../styles/comment.css'
+import '../styles/post.css';
+
+
 
 function PostPage(): JSX.Element {
   const { postId } = useParams();
@@ -15,8 +19,9 @@ function PostPage(): JSX.Element {
   );
   const comments = useSelector((store: RootState) => store.comment.comment);
   console.log(comments);
-  
+  const user = useSelector((store: RootState) => store.auth.user);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const id = postId;
 
@@ -37,18 +42,28 @@ function PostPage(): JSX.Element {
     dispatch(commentsAddThunk(obj)).catch(console.log);
   };
 
+const postDelete = ():void => {
+  dispatch(postDel(selectedPost?.id)).catch(console.log);
+  navigate('/posts');
+}
+
   return (
     <div className='container-postpage'>
       <div>
       <div>
-        <img src={selectedPost.img} alt="post" />
+        <img className='img-post' src={selectedPost.img} alt="post" />
       </div>
-      <h1>{selectedPost.title}</h1>
-      <p>{selectedPost.description}</p>
-      <p>{selectedPost.date}</p>
-
-      <button type="button">del</button>
-      <button type="button">upd</button>
+      <div className='container-info'>
+      <h1 className='info'>{selectedPost.title}</h1>
+      <p className='info'>{selectedPost.description}</p>
+      <p className='info'>{selectedPost.date}</p>
+      </div>
+      <div>{user?.role === 'admin' ?
+      <div>
+      <button onClick={postDelete} type="button">Удалить</button>
+      
+      </div> : null} 
+  </div>
       </div>
       <div>
         
