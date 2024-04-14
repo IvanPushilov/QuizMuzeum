@@ -6,6 +6,8 @@ import { useAppDispatch } from '../../../store/store';
 import { commentsAddThunk, commentsLoadThunk } from '../commentsSlice';
 import CommentItem from './CommentItem';
 import '../styles/comment.css'
+import '../styles/post.css';
+
 
 function PostPage(): JSX.Element {
   const { postId } = useParams();
@@ -41,12 +43,13 @@ function PostPage(): JSX.Element {
     <div className='container-postpage'>
       <div>
       <div>
-        <img src={selectedPost.img} alt="post" />
+        <img className='img-post' src={selectedPost.img} alt="post" />
       </div>
-      <h1>{selectedPost.title}</h1>
-      <p>{selectedPost.description}</p>
-      <p>{selectedPost.date}</p>
-
+      <div className='container-info'>
+      <h1 className='info'>{selectedPost.title}</h1>
+      <p className='info'>{selectedPost.description}</p>
+      <p className='info'>{selectedPost.date}</p>
+      </div>
       <button type="button">del</button>
       <button type="button">upd</button>
       </div>
